@@ -25,19 +25,25 @@ Dalam upaya meningkatkan literasi di Indonesia, kami mempersembahkan aplikasi "B
 - Mendorong Literasi Aktif: Dengan tantangan membaca bulanan, "Bookstagram" mendorong pembaca untuk membaca lebih banyak secara teratur, yang pada akhirnya meningkatkan tingkat literasi masyarakat.
 
 
-### Daftar modul:
-- Main Page (oleh Adinda Nurdzykra Putri Nugraini)
+### Daftar modul: 
+- Main Page (oleh Adinda Nurdzykra Putri Nugraini)   
+
 Halaman utama setelah pengguna login. Halaman ini berisi keterangan singkat tentang aplikasi (tujuan aplikasi + apa yang bisa dilakukan di aplikasi ini) , menampilkan list buku dalam website, dan testimoni.
-- Profil Pengguna (oleh Sri Saraswati Widhisari)
+- Profil Pengguna (oleh Sri Saraswati Widhisari)  
+
 Halaman ini berisi form user yang menampilkan foto profil, role, dan dashboard sederhana yang berisi daftar bacaan profil pengguna. Di halaman ini, pengguna juga bisa menambah status seperti tweet. 
-- Forum diskusi (oleh Edwin Daniel Toliansa)
+- Forum diskusi (oleh Edwin Daniel Toliansa)  
+
 Halaman ini menampilkan urutan forum diskusi berbentuk card yang berada di rangking 1 sampai 15. Ketika card diklik akan muncl diskusi seperti bubble di stackoverflow. Satu komen bisa direply dengan komen lainnya. Pengguna bisa menghapus dan edit komen sendiri.  Di halaman ini, akan ada button “add forum discussion”, yang jika diklik oleh pembaca akan menampilkan pop-up message “gagal” dan kalau diklik oleh author maka beralih ke halaman form add book forum discussion. 
 - Add book forum discussion (oleh Scudetto Ciano Syam) 
+
 Halaman ini berbentuk form yang menerima input judul buku, tetapi judul buku yang ditambahkan harus diapstikan sudah ada di dalam dataset.
-- Communities (oleh Darryl Nawawi )
+- Communities (oleh Darryl Nawawi )   
+
  Halaman ini interfacenya seperti feed, menampilkan event - event yang akan ada, yang mana penulis buku dapat menambahkan acara communities.
 
- ### Modul yang bukan modul buku, tetapi harus ada:
+
+### Modul yang bukan modul buku, tetapi harus ada:
 - Navbar 
 - Login/Register (Authentication)
 
@@ -55,8 +61,12 @@ Communities       → Darryl Nawawi
 ### Persona
 
 Semua user harus login terlebih dahulu untuk dapat mengakses website
-**Penulis Buku** : Dapat membuka forum diskusi, dapat menambahkan buku di dataset dapat menambahkan event buku
-**Pembaca Buku** : Tidak bisa menambahkan forum diskusi baru,  tidak bisa menambahkan buku di dataset, dan tidak bisa menambahkan event buku
+**Penulis Buku** : 
+
+Dapat membuka forum diskusi, dapat menambahkan buku di dataset dapat menambahkan event buku
+**Pembaca Buku** : 
+
+Tidak bisa menambahkan forum diskusi baru,  tidak bisa menambahkan buku di dataset, dan tidak bisa menambahkan event buku
 
 
 ### Sumber dataset:
