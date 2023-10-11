@@ -61,9 +61,11 @@ Communities       → Darryl Nawawi
 ### Persona
 
 Semua user harus login terlebih dahulu untuk dapat mengakses website
+
 **Penulis Buku** : 
 
 Dapat membuka forum diskusi, dapat menambahkan buku di dataset dapat menambahkan event buku
+
 **Pembaca Buku** : 
 
 Tidak bisa menambahkan forum diskusi baru,  tidak bisa menambahkan buku di dataset, dan tidak bisa menambahkan event buku
