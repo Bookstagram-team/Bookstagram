@@ -1,0 +1,1602 @@
+[
+  {
+    "pk": 1,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 0,
+      "ISBN": "0195153448",
+      "Judul": "Classical Mythology",
+      "Penulis": "Mark P. O. Morford",
+      "Publikasi": 2002,
+      "Publisher": "Oxford University Press",
+      "ImageS": "http://images.amazon.com/images/P/0195153448.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/0195153448.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/0195153448.01.LZZZZZZZ.jpg",
+      "rating": 5
+    }
+  },
+  {
+    "pk": 2,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 1,
+      "ISBN": "0002005018",
+      "Judul": "Clara Callan",
+      "Penulis": "Richard Bruce Wright",
+      "Publikasi": 2001,
+      "Publisher": "HarperFlamingo Canada",
+      "ImageS": "http://images.amazon.com/images/P/0002005018.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/0002005018.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/0002005018.01.LZZZZZZZ.jpg",
+      "rating": 10
+    }
+  },
+  {
+    "pk": 3,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 2,
+      "ISBN": "0060973129",
+      "Judul": "Decision in Normandy",
+      "Penulis": "Carlo D'Este",
+      "Publikasi": 1991,
+      "Publisher": "HarperPerennial",
+      "ImageS": "http://images.amazon.com/images/P/0060973129.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/0060973129.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/0060973129.01.LZZZZZZZ.jpg",
+      "rating": 10
+    }
+  },
+  {
+    "pk": 4,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 3,
+      "ISBN": "0374157065",
+      "Judul": "Flu: The Story of the Great Influenza Pandemic of 1918 and the Search for the Virus That Caused It",
+      "Penulis": "Gina Bari Kolata",
+      "Publikasi": 1999,
+      "Publisher": "Farrar Straus Giroux",
+      "ImageS": "http://images.amazon.com/images/P/0374157065.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/0374157065.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/0374157065.01.LZZZZZZZ.jpg",
+      "rating": 7
+    }
+  },
+  {
+    "pk": 5,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 4,
+      "ISBN": "0393045218",
+      "Judul": "The Mummies of Urumchi",
+      "Penulis": "E. J. W. Barber",
+      "Publikasi": 1999,
+      "Publisher": "W. W. Norton &amp; Company",
+      "ImageS": "http://images.amazon.com/images/P/0393045218.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/0393045218.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/0393045218.01.LZZZZZZZ.jpg",
+      "rating": 4
+    }
+  },
+  {
+    "pk": 6,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 5,
+      "ISBN": "0399135782",
+      "Judul": "The Kitchen God's Wife",
+      "Penulis": "Amy Tan",
+      "Publikasi": 1991,
+      "Publisher": "Putnam Pub Group",
+      "ImageS": "http://images.amazon.com/images/P/0399135782.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/0399135782.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/0399135782.01.LZZZZZZZ.jpg",
+      "rating": 2
+    }
+  },
+  {
+    "pk": 7,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 6,
+      "ISBN": "0425176428",
+      "Judul": "What If?: The World's Foremost Military Historians Imagine What Might Have Been",
+      "Penulis": "Robert Cowley",
+      "Publikasi": 2000,
+      "Publisher": "Berkley Publishing Group",
+      "ImageS": "http://images.amazon.com/images/P/0425176428.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/0425176428.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/0425176428.01.LZZZZZZZ.jpg",
+      "rating": 9
+    }
+  },
+  {
+    "pk": 8,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 7,
+      "ISBN": "0671870432",
+      "Judul": "PLEADING GUILTY",
+      "Penulis": "Scott Turow",
+      "Publikasi": 1993,
+      "Publisher": "Audioworks",
+      "ImageS": "http://images.amazon.com/images/P/0671870432.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/0671870432.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/0671870432.01.LZZZZZZZ.jpg",
+      "rating": 5
+    }
+  },
+  {
+    "pk": 9,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 8,
+      "ISBN": "0679425608",
+      "Judul": "Under the Black Flag: The Romance and the Reality of Life Among the Pirates",
+      "Penulis": "David Cordingly",
+      "Publikasi": 1996,
+      "Publisher": "Random House",
+      "ImageS": "http://images.amazon.com/images/P/0679425608.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/0679425608.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/0679425608.01.LZZZZZZZ.jpg",
+      "rating": 4
+    }
+  },
+  {
+    "pk": 10,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 9,
+      "ISBN": "074322678X",
+      "Judul": "Where You'll Find Me: And Other Stories",
+      "Penulis": "Ann Beattie",
+      "Publikasi": 2002,
+      "Publisher": "Scribner",
+      "ImageS": "http://images.amazon.com/images/P/074322678X.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/074322678X.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/074322678X.01.LZZZZZZZ.jpg",
+      "rating": 6
+    }
+  },
+  {
+    "pk": 11,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 10,
+      "ISBN": "0771074670",
+      "Judul": "Nights Below Station Street",
+      "Penulis": "David Adams Richards",
+      "Publikasi": 1988,
+      "Publisher": "Emblem Editions",
+      "ImageS": "http://images.amazon.com/images/P/0771074670.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/0771074670.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/0771074670.01.LZZZZZZZ.jpg",
+      "rating": 1
+    }
+  },
+  {
+    "pk": 12,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 11,
+      "ISBN": "080652121X",
+      "Judul": "Hitler's Secret Bankers: The Myth of Swiss Neutrality During the Holocaust",
+      "Penulis": "Adam Lebor",
+      "Publikasi": 2000,
+      "Publisher": "Citadel Press",
+      "ImageS": "http://images.amazon.com/images/P/080652121X.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/080652121X.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/080652121X.01.LZZZZZZZ.jpg",
+      "rating": 5
+    }
+  },
+  {
+    "pk": 13,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 12,
+      "ISBN": "0887841740",
+      "Judul": "The Middle Stories",
+      "Penulis": "Sheila Heti",
+      "Publikasi": 2004,
+      "Publisher": "House of Anansi Press",
+      "ImageS": "http://images.amazon.com/images/P/0887841740.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/0887841740.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/0887841740.01.LZZZZZZZ.jpg",
+      "rating": 7
+    }
+  },
+  {
+    "pk": 14,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 13,
+      "ISBN": 1552041778,
+      "Judul": "Jane Doe",
+      "Penulis": "R. J. Kaiser",
+      "Publikasi": 1999,
+      "Publisher": "Mira Books",
+      "ImageS": "http://images.amazon.com/images/P/1552041778.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/1552041778.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/1552041778.01.LZZZZZZZ.jpg",
+      "rating": 2
+    }
+  },
+  {
+    "pk": 15,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 14,
+      "ISBN": 1558746218,
+      "Judul": "A Second Chicken Soup for the Woman's Soul (Chicken Soup for the Soul Series)",
+      "Penulis": "Jack Canfield",
+      "Publikasi": 1998,
+      "Publisher": "Health Communications",
+      "ImageS": "http://images.amazon.com/images/P/1558746218.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/1558746218.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/1558746218.01.LZZZZZZZ.jpg",
+      "rating": 6
+    }
+  },
+  {
+    "pk": 16,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 15,
+      "ISBN": 1567407781,
+      "Judul": "The Witchfinder (Amos Walker Mystery Series)",
+      "Penulis": "Loren D. Estleman",
+      "Publikasi": 1998,
+      "Publisher": "Brilliance Audio - Trade",
+      "ImageS": "http://images.amazon.com/images/P/1567407781.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/1567407781.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/1567407781.01.LZZZZZZZ.jpg",
+      "rating": 7
+    }
+  },
+  {
+    "pk": 17,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 16,
+      "ISBN": 1575663937,
+      "Judul": "More Cunning Than Man: A Social History of Rats and Man",
+      "Penulis": "Robert Hendrickson",
+      "Publikasi": 1999,
+      "Publisher": "Kensington Publishing Corp.",
+      "ImageS": "http://images.amazon.com/images/P/1575663937.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/1575663937.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/1575663937.01.LZZZZZZZ.jpg",
+      "rating": 10
+    }
+  },
+  {
+    "pk": 18,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 17,
+      "ISBN": 1881320189,
+      "Judul": "Goodbye to the Buttermilk Sky",
+      "Penulis": "Julia Oliver",
+      "Publikasi": 1994,
+      "Publisher": "River City Pub",
+      "ImageS": "http://images.amazon.com/images/P/1881320189.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/1881320189.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/1881320189.01.LZZZZZZZ.jpg",
+      "rating": 6
+    }
+  },
+  {
+    "pk": 19,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 18,
+      "ISBN": "0440234743",
+      "Judul": "The Testament",
+      "Penulis": "John Grisham",
+      "Publikasi": 1999,
+      "Publisher": "Dell",
+      "ImageS": "http://images.amazon.com/images/P/0440234743.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/0440234743.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/0440234743.01.LZZZZZZZ.jpg",
+      "rating": 9
+    }
+  },
+  {
+    "pk": 20,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 19,
+      "ISBN": "0452264464",
+      "Judul": "Beloved (Plume Contemporary Fiction)",
+      "Penulis": "Toni Morrison",
+      "Publikasi": 1994,
+      "Publisher": "Plume",
+      "ImageS": "http://images.amazon.com/images/P/0452264464.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/0452264464.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/0452264464.01.LZZZZZZZ.jpg",
+      "rating": 4
+    }
+  },
+  {
+    "pk": 21,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 20,
+      "ISBN": "0609804618",
+      "Judul": "Our Dumb Century: The Onion Presents 100 Years of Headlines from America's Finest News Source",
+      "Penulis": "The Onion",
+      "Publikasi": 1999,
+      "Publisher": "Three Rivers Press",
+      "ImageS": "http://images.amazon.com/images/P/0609804618.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/0609804618.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/0609804618.01.LZZZZZZZ.jpg",
+      "rating": 7
+    }
+  },
+  {
+    "pk": 22,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 21,
+      "ISBN": 1841721522,
+      "Judul": "New Vegetarian: Bold and Beautiful Recipes for Every Occasion",
+      "Penulis": "Celia Brooks Brown",
+      "Publikasi": 2001,
+      "Publisher": "Ryland Peters &amp; Small Ltd",
+      "ImageS": "http://images.amazon.com/images/P/1841721522.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/1841721522.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/1841721522.01.LZZZZZZZ.jpg",
+      "rating": 5
+    }
+  },
+  {
+    "pk": 23,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 22,
+      "ISBN": 1879384493,
+      "Judul": "If I'd Known Then What I Know Now: Why Not Learn from the Mistakes of Others? : You Can't Afford to Make Them All Yourself",
+      "Penulis": "J. R. Parrish",
+      "Publikasi": 2003,
+      "Publisher": "Cypress House",
+      "ImageS": "http://images.amazon.com/images/P/1879384493.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/1879384493.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/1879384493.01.LZZZZZZZ.jpg",
+      "rating": 3
+    }
+  },
+  {
+    "pk": 24,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 23,
+      "ISBN": "0061076031",
+      "Judul": "Mary-Kate &amp; Ashley Switching Goals (Mary-Kate and Ashley Starring in)",
+      "Penulis": "Mary-Kate &amp; Ashley Olsen",
+      "Publikasi": 2000,
+      "Publisher": "HarperEntertainment",
+      "ImageS": "http://images.amazon.com/images/P/0061076031.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/0061076031.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/0061076031.01.LZZZZZZZ.jpg",
+      "rating": 5
+    }
+  },
+  {
+    "pk": 25,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 24,
+      "ISBN": "0439095026",
+      "Judul": "Tell Me This Isn't Happening",
+      "Penulis": "Robynn Clairday",
+      "Publikasi": 1999,
+      "Publisher": "Scholastic",
+      "ImageS": "http://images.amazon.com/images/P/0439095026.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/0439095026.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/0439095026.01.LZZZZZZZ.jpg",
+      "rating": 4
+    }
+  },
+  {
+    "pk": 26,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 25,
+      "ISBN": "0689821166",
+      "Judul": "Flood : Mississippi 1927",
+      "Penulis": "Kathleen Duey",
+      "Publikasi": 1998,
+      "Publisher": "Aladdin",
+      "ImageS": "http://images.amazon.com/images/P/0689821166.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/0689821166.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/0689821166.01.LZZZZZZZ.jpg",
+      "rating": 5
+    }
+  },
+  {
+    "pk": 27,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 26,
+      "ISBN": "0971880107",
+      "Judul": "Wild Animus",
+      "Penulis": "Rich Shapero",
+      "Publikasi": 2004,
+      "Publisher": "Too Far",
+      "ImageS": "http://images.amazon.com/images/P/0971880107.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/0971880107.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/0971880107.01.LZZZZZZZ.jpg",
+      "rating": 9
+    }
+  },
+  {
+    "pk": 28,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 27,
+      "ISBN": "0345402871",
+      "Judul": "Airframe",
+      "Penulis": "Michael Crichton",
+      "Publikasi": 1997,
+      "Publisher": "Ballantine Books",
+      "ImageS": "http://images.amazon.com/images/P/0345402871.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/0345402871.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/0345402871.01.LZZZZZZZ.jpg",
+      "rating": 10
+    }
+  },
+  {
+    "pk": 29,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 28,
+      "ISBN": "0345417623",
+      "Judul": "Timeline",
+      "Penulis": "MICHAEL CRICHTON",
+      "Publikasi": 2000,
+      "Publisher": "Ballantine Books",
+      "ImageS": "http://images.amazon.com/images/P/0345417623.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/0345417623.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/0345417623.01.LZZZZZZZ.jpg",
+      "rating": 5
+    }
+  },
+  {
+    "pk": 30,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 29,
+      "ISBN": "0684823802",
+      "Judul": "OUT OF THE SILENT PLANET",
+      "Penulis": "C.S. Lewis",
+      "Publikasi": 1996,
+      "Publisher": "Scribner",
+      "ImageS": "http://images.amazon.com/images/P/0684823802.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/0684823802.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/0684823802.01.LZZZZZZZ.jpg",
+      "rating": 6
+    }
+  },
+  {
+    "pk": 31,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 30,
+      "ISBN": "0375759778",
+      "Judul": "Prague : A Novel",
+      "Penulis": "ARTHUR PHILLIPS",
+      "Publikasi": 2003,
+      "Publisher": "Random House Trade Paperbacks",
+      "ImageS": "http://images.amazon.com/images/P/0375759778.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/0375759778.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/0375759778.01.LZZZZZZZ.jpg",
+      "rating": 7
+    }
+  },
+  {
+    "pk": 32,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 31,
+      "ISBN": "0425163091",
+      "Judul": "Chocolate Jesus",
+      "Penulis": "Stephan Jaramillo",
+      "Publikasi": 1998,
+      "Publisher": "Berkley Publishing Group",
+      "ImageS": "http://images.amazon.com/images/P/0425163091.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/0425163091.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/0425163091.01.LZZZZZZZ.jpg",
+      "rating": 9
+    }
+  },
+  {
+    "pk": 33,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 32,
+      "ISBN": 3404921038,
+      "Judul": "Wie Barney es sieht.",
+      "Penulis": "Mordecai Richler",
+      "Publikasi": 2002,
+      "Publisher": "LÃ?Â¼bbe",
+      "ImageS": "http://images.amazon.com/images/P/3404921038.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/3404921038.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/3404921038.01.LZZZZZZZ.jpg",
+      "rating": 3
+    }
+  },
+  {
+    "pk": 34,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 33,
+      "ISBN": 3442353866,
+      "Judul": "Der Fluch der Kaiserin. Ein Richter- Di- Roman.",
+      "Penulis": "Eleanor Cooney",
+      "Publikasi": 2001,
+      "Publisher": "Goldmann",
+      "ImageS": "http://images.amazon.com/images/P/3442353866.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/3442353866.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/3442353866.01.LZZZZZZZ.jpg",
+      "rating": 8
+    }
+  },
+  {
+    "pk": 35,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 34,
+      "ISBN": 3442410665,
+      "Judul": "Sturmzeit. Roman.",
+      "Penulis": "Charlotte Link",
+      "Publikasi": 1991,
+      "Publisher": "Goldmann",
+      "ImageS": "http://images.amazon.com/images/P/3442410665.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/3442410665.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/3442410665.01.LZZZZZZZ.jpg",
+      "rating": 4
+    }
+  },
+  {
+    "pk": 36,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 35,
+      "ISBN": 3442446937,
+      "Judul": "Tage der Unschuld.",
+      "Penulis": "Richard North Patterson",
+      "Publikasi": 2000,
+      "Publisher": "Goldmann",
+      "ImageS": "http://images.amazon.com/images/P/3442446937.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/3442446937.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/3442446937.01.LZZZZZZZ.jpg",
+      "rating": 9
+    }
+  },
+  {
+    "pk": 37,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 36,
+      "ISBN": "0375406328",
+      "Judul": "Lying Awake",
+      "Penulis": "Mark Salzman",
+      "Publikasi": 2000,
+      "Publisher": "Alfred A. Knopf",
+      "ImageS": "http://images.amazon.com/images/P/0375406328.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/0375406328.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/0375406328.01.LZZZZZZZ.jpg",
+      "rating": 2
+    }
+  },
+  {
+    "pk": 38,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 37,
+      "ISBN": "0446310786",
+      "Judul": "To Kill a Mockingbird",
+      "Penulis": "Harper Lee",
+      "Publikasi": 1988,
+      "Publisher": "Little Brown &amp; Company",
+      "ImageS": "http://images.amazon.com/images/P/0446310786.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/0446310786.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/0446310786.01.LZZZZZZZ.jpg",
+      "rating": 5
+    }
+  },
+  {
+    "pk": 39,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 38,
+      "ISBN": "0449005615",
+      "Judul": "Seabiscuit: An American Legend",
+      "Penulis": "LAURA HILLENBRAND",
+      "Publikasi": 2002,
+      "Publisher": "Ballantine Books",
+      "ImageS": "http://images.amazon.com/images/P/0449005615.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/0449005615.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/0449005615.01.LZZZZZZZ.jpg",
+      "rating": 2
+    }
+  },
+  {
+    "pk": 40,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 39,
+      "ISBN": "0060168013",
+      "Judul": "Pigs in Heaven",
+      "Penulis": "Barbara Kingsolver",
+      "Publikasi": 1993,
+      "Publisher": "Harpercollins",
+      "ImageS": "http://images.amazon.com/images/P/0060168013.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/0060168013.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/0060168013.01.LZZZZZZZ.jpg",
+      "rating": 4
+    }
+  },
+  {
+    "pk": 41,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 40,
+      "ISBN": "038078243X",
+      "Judul": "Miss Zukas and the Raven's Dance",
+      "Penulis": "Jo Dereske",
+      "Publikasi": 1996,
+      "Publisher": "Avon",
+      "ImageS": "http://images.amazon.com/images/P/038078243X.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/038078243X.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/038078243X.01.LZZZZZZZ.jpg",
+      "rating": 4
+    }
+  },
+  {
+    "pk": 42,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 41,
+      "ISBN": "055321215X",
+      "Judul": "Pride and Prejudice",
+      "Penulis": "Jane Austen",
+      "Publikasi": 1983,
+      "Publisher": "Bantam",
+      "ImageS": "http://images.amazon.com/images/P/055321215X.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/055321215X.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/055321215X.01.LZZZZZZZ.jpg",
+      "rating": 5
+    }
+  },
+  {
+    "pk": 43,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 42,
+      "ISBN": "067176537X",
+      "Judul": "The Therapeutic Touch: How to Use Your Hands to Help or to Heal",
+      "Penulis": "Dolores Krieger",
+      "Publikasi": 1979,
+      "Publisher": "Fireside",
+      "ImageS": "http://images.amazon.com/images/P/067176537X.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/067176537X.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/067176537X.01.LZZZZZZZ.jpg",
+      "rating": 9
+    }
+  },
+  {
+    "pk": 44,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 43,
+      "ISBN": "0061099686",
+      "Judul": "Downtown",
+      "Penulis": "Anne Rivers Siddons",
+      "Publikasi": 1995,
+      "Publisher": "HarperTorch",
+      "ImageS": "http://images.amazon.com/images/P/0061099686.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/0061099686.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/0061099686.01.LZZZZZZZ.jpg",
+      "rating": 6
+    }
+  },
+  {
+    "pk": 45,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 44,
+      "ISBN": "0553582909",
+      "Judul": "Icebound",
+      "Penulis": "Dean R. Koontz",
+      "Publikasi": 2000,
+      "Publisher": "Bantam Books",
+      "ImageS": "http://images.amazon.com/images/P/0553582909.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/0553582909.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/0553582909.01.LZZZZZZZ.jpg",
+      "rating": 4
+    }
+  },
+  {
+    "pk": 46,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 45,
+      "ISBN": "0671888587",
+      "Judul": "I'll Be Seeing You",
+      "Penulis": "Mary Higgins Clark",
+      "Publikasi": 1994,
+      "Publisher": "Pocket",
+      "ImageS": "http://images.amazon.com/images/P/0671888587.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/0671888587.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/0671888587.01.LZZZZZZZ.jpg",
+      "rating": 7
+    }
+  },
+  {
+    "pk": 47,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 46,
+      "ISBN": "0553582747",
+      "Judul": "From the Corner of His Eye",
+      "Penulis": "Dean Koontz",
+      "Publikasi": 2001,
+      "Publisher": "Bantam Books",
+      "ImageS": "http://images.amazon.com/images/P/0553582747.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/0553582747.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/0553582747.01.LZZZZZZZ.jpg",
+      "rating": 6
+    }
+  },
+  {
+    "pk": 48,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 47,
+      "ISBN": "0425182908",
+      "Judul": "Isle of Dogs",
+      "Penulis": "Patricia Cornwell",
+      "Publikasi": 2002,
+      "Publisher": "Berkley Publishing Group",
+      "ImageS": "http://images.amazon.com/images/P/0425182908.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/0425182908.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/0425182908.01.LZZZZZZZ.jpg",
+      "rating": 7
+    }
+  },
+  {
+    "pk": 49,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 48,
+      "ISBN": "042518630X",
+      "Judul": "Purity in Death",
+      "Penulis": "J.D. Robb",
+      "Publikasi": 2002,
+      "Publisher": "Berkley Publishing Group",
+      "ImageS": "http://images.amazon.com/images/P/042518630X.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/042518630X.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/042518630X.01.LZZZZZZZ.jpg",
+      "rating": 4
+    }
+  },
+  {
+    "pk": 50,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 49,
+      "ISBN": "0440223571",
+      "Judul": "This Year It Will Be Different: And Other Stories",
+      "Penulis": "Maeve Binchy",
+      "Publikasi": 1997,
+      "Publisher": "Dell",
+      "ImageS": "http://images.amazon.com/images/P/0440223571.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/0440223571.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/0440223571.01.LZZZZZZZ.jpg",
+      "rating": 5
+    }
+  },
+  {
+    "pk": 51,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 50,
+      "ISBN": "0812523873",
+      "Judul": "Proxies",
+      "Penulis": "Laura J. Mixon",
+      "Publikasi": 1999,
+      "Publisher": "Tor Books",
+      "ImageS": "http://images.amazon.com/images/P/0812523873.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/0812523873.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/0812523873.01.LZZZZZZZ.jpg",
+      "rating": 6
+    }
+  },
+  {
+    "pk": 52,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 51,
+      "ISBN": "0842342702",
+      "Judul": "Left Behind: A Novel of the Earth's Last Days (Left Behind #1)",
+      "Penulis": "Tim Lahaye",
+      "Publikasi": 2000,
+      "Publisher": "Tyndale House Publishers",
+      "ImageS": "http://images.amazon.com/images/P/0842342702.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/0842342702.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/0842342702.01.LZZZZZZZ.jpg",
+      "rating": 8
+    }
+  },
+  {
+    "pk": 53,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 52,
+      "ISBN": "0440225701",
+      "Judul": "The Street Lawyer",
+      "Penulis": "JOHN GRISHAM",
+      "Publikasi": 1999,
+      "Publisher": "Dell",
+      "ImageS": "http://images.amazon.com/images/P/0440225701.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/0440225701.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/0440225701.01.LZZZZZZZ.jpg",
+      "rating": 8
+    }
+  },
+  {
+    "pk": 54,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 53,
+      "ISBN": "0060914068",
+      "Judul": "Love, Medicine and Miracles",
+      "Penulis": "M.D. Bernie S. Siegel",
+      "Publikasi": 1988,
+      "Publisher": "HarperCollins Publishers",
+      "ImageS": "http://images.amazon.com/images/P/0060914068.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/0060914068.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/0060914068.01.LZZZZZZZ.jpg",
+      "rating": 10
+    }
+  },
+  {
+    "pk": 55,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 54,
+      "ISBN": "0156047624",
+      "Judul": "All the King's Men",
+      "Penulis": "Robert Penn Warren",
+      "Publikasi": 1982,
+      "Publisher": "Harvest Books",
+      "ImageS": "http://images.amazon.com/images/P/0156047624.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/0156047624.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/0156047624.01.LZZZZZZZ.jpg",
+      "rating": 2
+    }
+  },
+  {
+    "pk": 56,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 55,
+      "ISBN": "0245542957",
+      "Judul": "Pacific Northwest",
+      "Penulis": "Hans Johannes Hoefer",
+      "Publikasi": 1985,
+      "Publisher": "Chambers Harrap Publishers Ltd",
+      "ImageS": "http://images.amazon.com/images/P/0245542957.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/0245542957.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/0245542957.01.LZZZZZZZ.jpg",
+      "rating": 6
+    }
+  },
+  {
+    "pk": 57,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 56,
+      "ISBN": "0380715899",
+      "Judul": "A Soldier of the Great War",
+      "Penulis": "Mark Helprin",
+      "Publikasi": 1992,
+      "Publisher": "Avon Books",
+      "ImageS": "http://images.amazon.com/images/P/0380715899.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/0380715899.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/0380715899.01.LZZZZZZZ.jpg",
+      "rating": 4
+    }
+  },
+  {
+    "pk": 58,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 57,
+      "ISBN": "0553280333",
+      "Judul": "Getting Well Again",
+      "Penulis": "O. Carol Simonton Md",
+      "Publikasi": 1992,
+      "Publisher": "Bantam",
+      "ImageS": "http://images.amazon.com/images/P/0553280333.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/0553280333.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/0553280333.01.LZZZZZZZ.jpg",
+      "rating": 4
+    }
+  },
+  {
+    "pk": 59,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 58,
+      "ISBN": "0961769947",
+      "Judul": "Northwest Wines and Wineries",
+      "Penulis": "Chuck Hill",
+      "Publikasi": 1993,
+      "Publisher": "Speed Graphics",
+      "ImageS": "http://images.amazon.com/images/P/0961769947.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/0961769947.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/0961769947.01.LZZZZZZZ.jpg",
+      "rating": 10
+    }
+  },
+  {
+    "pk": 60,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 59,
+      "ISBN": "0964778319",
+      "Judul": "An Atmosphere of Eternity: Stories of India",
+      "Penulis": "David Iglehart",
+      "Publikasi": 2002,
+      "Publisher": "Sunflower Press",
+      "ImageS": "http://images.amazon.com/images/P/0964778319.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/0964778319.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/0964778319.01.LZZZZZZZ.jpg",
+      "rating": 4
+    }
+  },
+  {
+    "pk": 61,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 60,
+      "ISBN": "0671623249",
+      "Judul": "LONESOME DOVE",
+      "Penulis": "Larry McMurtry",
+      "Publikasi": 1986,
+      "Publisher": "Pocket",
+      "ImageS": "http://images.amazon.com/images/P/0671623249.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/0671623249.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/0671623249.01.LZZZZZZZ.jpg",
+      "rating": 6
+    }
+  },
+  {
+    "pk": 62,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 61,
+      "ISBN": "0679810307",
+      "Judul": "Shabanu: Daughter of the Wind (Border Trilogy)",
+      "Penulis": "SUZANNE FISHER STAPLES",
+      "Publikasi": 1991,
+      "Publisher": "Laurel Leaf",
+      "ImageS": "http://images.amazon.com/images/P/0679810307.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/0679810307.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/0679810307.01.LZZZZZZZ.jpg",
+      "rating": 6
+    }
+  },
+  {
+    "pk": 63,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 62,
+      "ISBN": "0679865691",
+      "Judul": "Haveli (Laurel Leaf Books)",
+      "Penulis": "SUZANNE FISHER STAPLES",
+      "Publikasi": 1995,
+      "Publisher": "Laurel Leaf",
+      "ImageS": "http://images.amazon.com/images/P/0679865691.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/0679865691.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/0679865691.01.LZZZZZZZ.jpg",
+      "rating": 10
+    }
+  },
+  {
+    "pk": 64,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 63,
+      "ISBN": 2070423204,
+      "Judul": "Lieux dits",
+      "Penulis": "Michel Tournier",
+      "Publikasi": 2002,
+      "Publisher": "Gallimard",
+      "ImageS": "http://images.amazon.com/images/P/2070423204.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/2070423204.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/2070423204.01.LZZZZZZZ.jpg",
+      "rating": 2
+    }
+  },
+  {
+    "pk": 65,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 64,
+      "ISBN": "0345260317",
+      "Judul": "The Dragons of Eden: Speculations on the Evolution of Human Intelligence",
+      "Penulis": "Carl Sagan",
+      "Publikasi": 1978,
+      "Publisher": "Ballantine Books",
+      "ImageS": "http://images.amazon.com/images/P/0345260317.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/0345260317.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/0345260317.01.LZZZZZZZ.jpg",
+      "rating": 6
+    }
+  },
+  {
+    "pk": 66,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 65,
+      "ISBN": "0394743741",
+      "Judul": "The yawning heights",
+      "Penulis": "Aleksandr Zinoviev",
+      "Publikasi": 1980,
+      "Publisher": "Random House",
+      "ImageS": "http://images.amazon.com/images/P/0394743741.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/0394743741.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/0394743741.01.LZZZZZZZ.jpg",
+      "rating": 3
+    }
+  },
+  {
+    "pk": 67,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 66,
+      "ISBN": "042511774X",
+      "Judul": "Breathing Lessons",
+      "Penulis": "Anne Tyler",
+      "Publikasi": 1994,
+      "Publisher": "Berkley Publishing Group",
+      "ImageS": "http://images.amazon.com/images/P/042511774X.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/042511774X.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/042511774X.01.LZZZZZZZ.jpg",
+      "rating": 3
+    }
+  },
+  {
+    "pk": 68,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 67,
+      "ISBN": "0804106304",
+      "Judul": "The Joy Luck Club",
+      "Penulis": "Amy Tan",
+      "Publikasi": 1994,
+      "Publisher": "Prentice Hall (K-12)",
+      "ImageS": "http://images.amazon.com/images/P/0804106304.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/0804106304.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/0804106304.01.LZZZZZZZ.jpg",
+      "rating": 7
+    }
+  },
+  {
+    "pk": 69,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 68,
+      "ISBN": 1853262404,
+      "Judul": "Heart of Darkness (Wordsworth Collection)",
+      "Penulis": "Joseph Conrad",
+      "Publikasi": 1998,
+      "Publisher": "NTC/Contemporary Publishing Company",
+      "ImageS": "http://images.amazon.com/images/P/1853262404.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/1853262404.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/1853262404.01.LZZZZZZZ.jpg",
+      "rating": 10
+    }
+  },
+  {
+    "pk": 70,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 69,
+      "ISBN": "0312970242",
+      "Judul": "The Angel Is Near",
+      "Penulis": "Deepak Chopra",
+      "Publikasi": 2000,
+      "Publisher": "St. Martin's Press",
+      "ImageS": "http://images.amazon.com/images/P/0312970242.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/0312970242.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/0312970242.01.LZZZZZZZ.jpg",
+      "rating": 6
+    }
+  },
+  {
+    "pk": 71,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 70,
+      "ISBN": 1853260053,
+      "Judul": "Tess of the D'Urbervilles (Wordsworth Classics)",
+      "Penulis": "Thomas Hardy",
+      "Publikasi": 1997,
+      "Publisher": "NTC/Contemporary Publishing Company",
+      "ImageS": "http://images.amazon.com/images/P/1853260053.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/1853260053.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/1853260053.01.LZZZZZZZ.jpg",
+      "rating": 4
+    }
+  },
+  {
+    "pk": 72,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 71,
+      "ISBN": 1414035004,
+      "Judul": "The Adventures of Drew and Ellie: The Magical Dress",
+      "Penulis": "Charles Noland",
+      "Publikasi": 2003,
+      "Publisher": "1stBooks Library",
+      "ImageS": "http://images.amazon.com/images/P/1414035004.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/1414035004.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/1414035004.01.LZZZZZZZ.jpg",
+      "rating": 3
+    }
+  },
+  {
+    "pk": 73,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 72,
+      "ISBN": "0060938412",
+      "Judul": "The Accidental Virgin",
+      "Penulis": "Valerie Frankel",
+      "Publikasi": 2003,
+      "Publisher": "Avon Trade",
+      "ImageS": "http://images.amazon.com/images/P/0060938412.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/0060938412.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/0060938412.01.LZZZZZZZ.jpg",
+      "rating": 7
+    }
+  },
+  {
+    "pk": 74,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 73,
+      "ISBN": "0140067477",
+      "Judul": "The Tao of Pooh",
+      "Penulis": "Benjamin Hoff",
+      "Publikasi": 1983,
+      "Publisher": "Penguin Books",
+      "ImageS": "http://images.amazon.com/images/P/0140067477.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/0140067477.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/0140067477.01.LZZZZZZZ.jpg",
+      "rating": 3
+    }
+  },
+  {
+    "pk": 75,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 74,
+      "ISBN": "0345465083",
+      "Judul": "Seabiscuit",
+      "Penulis": "LAURA HILLENBRAND",
+      "Publikasi": 2003,
+      "Publisher": "Ballantine Books",
+      "ImageS": "http://images.amazon.com/images/P/0345465083.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/0345465083.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/0345465083.01.LZZZZZZZ.jpg",
+      "rating": 8
+    }
+  },
+  {
+    "pk": 76,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 75,
+      "ISBN": "0451625889",
+      "Judul": "The Prince",
+      "Penulis": "Niccolo Machiavelli",
+      "Publikasi": 1952,
+      "Publisher": "Signet Book",
+      "ImageS": "http://images.amazon.com/images/P/0451625889.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/0451625889.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/0451625889.01.LZZZZZZZ.jpg",
+      "rating": 6
+    }
+  },
+  {
+    "pk": 77,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 76,
+      "ISBN": 1558531025,
+      "Judul": "Life's Little Instruction Book (Life's Little Instruction Books (Paperback))",
+      "Penulis": "H. Jackson Brown",
+      "Publikasi": 1991,
+      "Publisher": "Thomas Nelson",
+      "ImageS": "http://images.amazon.com/images/P/1558531025.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/1558531025.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/1558531025.01.LZZZZZZZ.jpg",
+      "rating": 5
+    }
+  },
+  {
+    "pk": 78,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 77,
+      "ISBN": "0441783589",
+      "Judul": "Starship Troopers",
+      "Penulis": "Robert A. Heinlein",
+      "Publikasi": 1987,
+      "Publisher": "Ace Books",
+      "ImageS": "http://images.amazon.com/images/P/0441783589.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/0441783589.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/0441783589.01.LZZZZZZZ.jpg",
+      "rating": 10
+    }
+  },
+  {
+    "pk": 79,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 78,
+      "ISBN": "0394895894",
+      "Judul": "The Ruby in the Smoke (Sally Lockhart Trilogy, Book 1)",
+      "Penulis": "PHILIP PULLMAN",
+      "Publikasi": 1988,
+      "Publisher": "Laurel Leaf",
+      "ImageS": "http://images.amazon.com/images/P/0394895894.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/0394895894.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/0394895894.01.LZZZZZZZ.jpg",
+      "rating": 3
+    }
+  },
+  {
+    "pk": 80,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 79,
+      "ISBN": 1569871213,
+      "Judul": "Black Beauty (Illustrated Classics)",
+      "Penulis": "Anna Sewell",
+      "Publikasi": 1995,
+      "Publisher": "Landoll",
+      "ImageS": "http://images.amazon.com/images/P/1569871213.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/1569871213.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/1569871213.01.LZZZZZZZ.jpg",
+      "rating": 4
+    }
+  },
+  {
+    "pk": 81,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 80,
+      "ISBN": "0375410538",
+      "Judul": "Anil's Ghost",
+      "Penulis": "MICHAEL ONDAATJE",
+      "Publikasi": 2000,
+      "Publisher": "Knopf",
+      "ImageS": "http://images.amazon.com/images/P/0375410538.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/0375410538.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/0375410538.01.LZZZZZZZ.jpg",
+      "rating": 8
+    }
+  },
+  {
+    "pk": 82,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 81,
+      "ISBN": "0966986105",
+      "Judul": "Prescription for Terror",
+      "Penulis": "Sandra Levy Ceren",
+      "Publikasi": 1999,
+      "Publisher": "Andrew Scott Publishers",
+      "ImageS": "http://images.amazon.com/images/P/0966986105.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/0966986105.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/0966986105.01.LZZZZZZZ.jpg",
+      "rating": 4
+    }
+  },
+  {
+    "pk": 83,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 82,
+      "ISBN": "087113375X",
+      "Judul": "Modern Manners: An Etiquette Book for Rude People",
+      "Penulis": "P.J. O'Rourke",
+      "Publikasi": 1990,
+      "Publisher": "Atlantic Monthly Press",
+      "ImageS": "http://images.amazon.com/images/P/087113375X.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/087113375X.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/087113375X.01.LZZZZZZZ.jpg",
+      "rating": 2
+    }
+  },
+  {
+    "pk": 84,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 83,
+      "ISBN": "0340767936",
+      "Judul": "Turning Thirty",
+      "Penulis": "Mike Gayle",
+      "Publikasi": 2000,
+      "Publisher": "Hodder &amp; Stoughton General Division",
+      "ImageS": "http://images.amazon.com/images/P/0340767936.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/0340767936.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/0340767936.01.LZZZZZZZ.jpg",
+      "rating": 10
+    }
+  },
+  {
+    "pk": 85,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 84,
+      "ISBN": "0743403843",
+      "Judul": "Decipher",
+      "Penulis": "Stel Pavlou",
+      "Publikasi": 2002,
+      "Publisher": "Simon &amp; Schuster (Trade Division)",
+      "ImageS": "http://images.amazon.com/images/P/0743403843.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/0743403843.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/0743403843.01.LZZZZZZZ.jpg",
+      "rating": 10
+    }
+  },
+  {
+    "pk": 86,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 85,
+      "ISBN": "0060930365",
+      "Judul": "My First Cousin Once Removed: Money, Madness, and the Family of Robert Lowell",
+      "Penulis": "Sarah Payne Stuart",
+      "Publikasi": 1999,
+      "Publisher": "Perennial",
+      "ImageS": "http://images.amazon.com/images/P/0060930365.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/0060930365.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/0060930365.01.LZZZZZZZ.jpg",
+      "rating": 5
+    }
+  },
+  {
+    "pk": 87,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 86,
+      "ISBN": "0060177586",
+      "Judul": "Standing Firm: A Vice-Presidential Memoir",
+      "Penulis": "Dan Quayle",
+      "Publikasi": 1994,
+      "Publisher": "Harpercollins",
+      "ImageS": "http://images.amazon.com/images/P/0060177586.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/0060177586.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/0060177586.01.LZZZZZZZ.jpg",
+      "rating": 4
+    }
+  },
+  {
+    "pk": 88,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 87,
+      "ISBN": "0071416331",
+      "Judul": "Team Bush : Leadership Lessons from the Bush White House",
+      "Penulis": "Donald F. Kettl",
+      "Publikasi": 2003,
+      "Publisher": "McGraw-Hill",
+      "ImageS": "http://images.amazon.com/images/P/0071416331.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/0071416331.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/0071416331.01.LZZZZZZZ.jpg",
+      "rating": 1
+    }
+  },
+  {
+    "pk": 89,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 88,
+      "ISBN": "0375509038",
+      "Judul": "The Right Man : The Surprise Presidency of George W. Bush",
+      "Penulis": "DAVID FRUM",
+      "Publikasi": 2003,
+      "Publisher": "Random House",
+      "ImageS": "http://images.amazon.com/images/P/0375509038.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/0375509038.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/0375509038.01.LZZZZZZZ.jpg",
+      "rating": 2
+    }
+  },
+  {
+    "pk": 90,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 89,
+      "ISBN": "0553062042",
+      "Judul": "Daybreakers Louis Lamour Collection",
+      "Penulis": "Louis Lamour",
+      "Publikasi": 1981,
+      "Publisher": "Bantam Doubleday Dell",
+      "ImageS": "http://images.amazon.com/images/P/0553062042.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/0553062042.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/0553062042.01.LZZZZZZZ.jpg",
+      "rating": 10
+    }
+  },
+  {
+    "pk": 91,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 90,
+      "ISBN": "0316769487",
+      "Judul": "The Catcher in the Rye",
+      "Penulis": "J.D. Salinger",
+      "Publikasi": 1991,
+      "Publisher": "Little, Brown",
+      "ImageS": "http://images.amazon.com/images/P/0316769487.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/0316769487.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/0316769487.01.LZZZZZZZ.jpg",
+      "rating": 8
+    }
+  },
+  {
+    "pk": 92,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 91,
+      "ISBN": 8445071408,
+      "Judul": "El Senor De Los Anillos: LA Comunidad Del Anillo (Lord of the Rings (Spanish))",
+      "Penulis": "J. R. R. Tolkien",
+      "Publikasi": 2001,
+      "Publisher": "Minotauro",
+      "ImageS": "http://images.amazon.com/images/P/8445071408.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/8445071408.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/8445071408.01.LZZZZZZZ.jpg",
+      "rating": 9
+    }
+  },
+  {
+    "pk": 93,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 92,
+      "ISBN": 8445071769,
+      "Judul": "El Senor De Los Anillos: Las DOS Torres (Lord of the Rings (Paperback))",
+      "Penulis": "J. R. R. Tolkien",
+      "Publikasi": 2001,
+      "Publisher": "Minotauro",
+      "ImageS": "http://images.amazon.com/images/P/8445071769.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/8445071769.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/8445071769.01.LZZZZZZZ.jpg",
+      "rating": 5
+    }
+  },
+  {
+    "pk": 94,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 93,
+      "ISBN": 8445071777,
+      "Judul": "El Senor De Los Anillos: El Retorno Del Rey (Tolkien, J. R. R. Lord of the Rings. 3.)",
+      "Penulis": "J. R. R. Tolkien",
+      "Publikasi": 2001,
+      "Publisher": "Distribooks",
+      "ImageS": "http://images.amazon.com/images/P/8445071777.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/8445071777.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/8445071777.01.LZZZZZZZ.jpg",
+      "rating": 6
+    }
+  },
+  {
+    "pk": 95,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 94,
+      "ISBN": "0679429220",
+      "Judul": "Midnight in the Garden of Good and Evil: A Savannah Story",
+      "Penulis": "John Berendt",
+      "Publikasi": 1994,
+      "Publisher": "Random House",
+      "ImageS": "http://images.amazon.com/images/P/0679429220.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/0679429220.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/0679429220.01.LZZZZZZZ.jpg",
+      "rating": 9
+    }
+  },
+  {
+    "pk": 96,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 95,
+      "ISBN": "0671867156",
+      "Judul": "Pretend You Don't See Her",
+      "Penulis": "Mary Higgins Clark",
+      "Publikasi": 1998,
+      "Publisher": "Pocket",
+      "ImageS": "http://images.amazon.com/images/P/0671867156.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/0671867156.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/0671867156.01.LZZZZZZZ.jpg",
+      "rating": 9
+    }
+  },
+  {
+    "pk": 97,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 96,
+      "ISBN": "0312252617",
+      "Judul": "Fast Women",
+      "Penulis": "Jennifer Crusie",
+      "Publikasi": 2001,
+      "Publisher": "St. Martin's Press",
+      "ImageS": "http://images.amazon.com/images/P/0312252617.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/0312252617.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/0312252617.01.LZZZZZZZ.jpg",
+      "rating": 3
+    }
+  },
+  {
+    "pk": 98,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 97,
+      "ISBN": "0312261594",
+      "Judul": "Female Intelligence",
+      "Penulis": "Jane Heller",
+      "Publikasi": 2001,
+      "Publisher": "St. Martin's Press",
+      "ImageS": "http://images.amazon.com/images/P/0312261594.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/0312261594.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/0312261594.01.LZZZZZZZ.jpg",
+      "rating": 9
+    }
+  },
+  {
+    "pk": 99,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 98,
+      "ISBN": "0316748641",
+      "Judul": "Pasquale's Nose: Idle Days in an Italian Town",
+      "Penulis": "Michael Rips",
+      "Publikasi": 2002,
+      "Publisher": "Back Bay Books",
+      "ImageS": "http://images.amazon.com/images/P/0316748641.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/0316748641.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/0316748641.01.LZZZZZZZ.jpg",
+      "rating": 10
+    }
+  },
+  {
+    "pk": 100,
+    "model": "book.Book",
+    "fields": {
+      "Urutan": 99,
+      "ISBN": "0316973742",
+      "Judul": "The Gospel of Judas: A Novel",
+      "Penulis": "Simon Mawer",
+      "Publikasi": 2002,
+      "Publisher": "Back Bay Books",
+      "ImageS": "http://images.amazon.com/images/P/0316973742.01.THUMBZZZ.jpg",
+      "ImageM": "http://images.amazon.com/images/P/0316973742.01.MZZZZZZZ.jpg",
+      "ImageL": "http://images.amazon.com/images/P/0316973742.01.LZZZZZZZ.jpg",
+      "rating": 6
+    }
+  }
+]

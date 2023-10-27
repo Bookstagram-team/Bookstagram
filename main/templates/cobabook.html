@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Daftar Buku</title>
+</head>
+<body>
+    <h1>Daftar Buku</h1>
+    <ul>
+        {% for book in books %}
+            <li>{{ book.rating}}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
