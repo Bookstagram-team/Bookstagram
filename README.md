@@ -34,7 +34,8 @@ Halaman utama setelah pengguna login. Halaman ini berisi keterangan singkat tent
 Halaman ini berisi form user yang menampilkan foto profil, role, dan bio pengguna. Selain itu terdapatt tombol untuk spam meme of the day. Di halaman ini, pengguna juga langsung menampilkan filter buku dengan judul yang memuat huruf pertama username pengguna. 
 - Forum diskusi (oleh Edwin Daniel Toliansa)  
 
-Halaman ini menampilkan urutan forum diskusi berbentuk card yang berada di rangking 1 sampai 15. Ketika card diklik akan muncl diskusi seperti bubble di stackoverflow. Satu komen bisa direply dengan komen lainnya. Pengguna bisa menghapus dan edit komen sendiri.  Di halaman ini, akan ada button “add forum discussion”, yang jika diklik oleh pembaca akan menampilkan pop-up message “gagal” dan kalau diklik oleh author maka beralih ke halaman form add book forum discussion. 
+Halaman ini menampilkan urutan forum diskusi berbentuk card. Ketika card diklik akan muncl diskusi seperti bubble di stackoverflow. Satu komen bisa direply, like dan dislike forum lainnya. Di halaman ini, akan ada button “add forum discussion”, yang jika diklik oleh pembaca akan menampilkan card forum berupa nama, penulis forum, waktu dibuatya forum, serta dua text field yang seharunsya berisi judul buku dan isi forum.
+
 - Katalog Buku (oleh Scudetto Ciano Syam) 
 
 Halaman ini menampilkan buku-buku yang ada pada aplikasi juga dapat melihat informasi detail mengenai buku tersebut, halaman ini juga memiliki fitur menambahkan buku.
