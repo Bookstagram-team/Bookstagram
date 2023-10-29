@@ -1,0 +1,8 @@
+# django
+Django==2.1.5
+gunicorn
+whitenoise
+psycopg2-binary
+requests
+urllib3
+django-environ

@@ -1,0 +1,149 @@
+{% extends 'base.html' %}
+{% block title %}Booklist{% endblock %}
+
+{% block navbar %}
+{% load static %}
+<!-- CSS Bootstrap -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+<!-- CSS Custom File -->
+<link href="{% static 'css/homepage.css' %}" rel="stylesheet">
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <!-- Toggler -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- Navbar items -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'main:show_main' %}">Home</a>
+                </li>
+                <li class="event">
+                  <a class="nav-link" href="{% url 'communities:show_communities' %}">Event</a>
+              </li>
+              <li class="discussion">
+                <a class="nav-link" href="{% url 'communities:show_books' %}">Booklist</a>
+            </li>
+            </ul>
+            <!-- Navbar search box and user -->
+            {% if user.is_authenticated %}
+            <div class="nav-item dropdown" style="margin-left: 10px;">
+                <a class="nav-link dropdown-toggle text-light" data-bs-toggle="dropdown" role="buton" aria-expanded="false"><i class="fas fa-user"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="{% url 'main:profile' request.user.profile.pk %}">Profile</a></li>
+                    <li><a class="dropdown-item" href="{% url 'main:logout' %}">Sign Out</a></li>
+                </ul>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</nav>
+{% endblock navbar %}
+{% block content %}
+
+<h1 class="text-4xl font-semibold mb-6 text-center">Booklist</h1>
+
+<div class="search-container text-center mb-4">
+    <input class="form-control d-inline-block" style="width: 300px;" type="search" placeholder="Search" aria-label="Search" id="search-input">
+    <button class="btn btn-outline-success d-inline-block" type="submit" id="search-button">Search</button>
+    <button class="btn btn-outline-primary dropdown-toggle" type="button" id="sortDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+        Sort by
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="sortDropdown">
+        <li><a class="dropdown-item" id="sortByName">Title</a></li>
+        <li><a class="dropdown-item" id="sortByRating">Rating</a></li>
+    </ul>
+</div>
+
+<div class="row">
+    <!-- Tempat untuk kartu-kartu buku akan ditempatkan di sini oleh JavaScript -->
+</div>
+
+<script>
+    // fungsi untuk dapetin dan nampilin buku dari dataset
+    async function getBooks() {
+        return fetch("{% url 'book:get_books' %}").then((res) => res.json())
+    }
+
+    function sortByName(books) {
+        return books.sort((a, b) => a.fields.Judul.localeCompare(b.fields.Judul));
+    }
+
+    function sortByRating(books) {
+        return books.sort((a, b) => b.fields.rating - a.fields.rating); // Urutkan dari rating tertinggi ke terendah
+    }
+
+    async function refreshBooks(searchText = '',sortByTitle = false,sortByRatingFlag = false) {
+        document.querySelector(".row").innerHTML = "";
+        const books = await getBooks();
+        let filteredBooks = books.filter(item => item.fields.Judul.toLowerCase().includes(searchText.toLowerCase()));
+        
+        if (sortByTitle) {
+            filteredBooks = sortByName(filteredBooks);
+        }
+
+        if (sortByRatingFlag) {
+            filteredBooks = sortByRating(filteredBooks);
+        }
+
+        filteredBooks.forEach((item, index) => {
+            const bookCard = `
+            <div class="col-md-4">
+                <div class="card mb-4" style="max-width: 400px;">
+                    <img src="${item.fields.ImageL}" class="card-img-top" alt="Book Image" style="width: 100%; height: 300px; object-fit: cover;">
+                    <div class="card-body text-center">
+                        <h5 class="card-title h4 font-weight-bold">${item.fields.Judul}</h5>
+                        <br>
+                        <p class="card-text italic">Author: ${item.fields.Penulis}</p>
+                        <p class="card-text italic">Publisher: ${item.fields.Publisher}</p>
+                        <ul class="list-group list-group-flush mb-3">
+                            <li class="list-group-item">Rating: ${item.fields.rating}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>`;
+
+            const row = document.querySelector(".row");
+            row.innerHTML += bookCard;
+        });
+    }
+
+    function handleSearch() {
+        const searchText = document.querySelector('#search-input').value;
+        refreshBooks(searchText);
+    }
+
+    document.querySelector('.search-container').addEventListener('click', (event) => {
+        if (event.target.id === 'search-button') {
+            event.preventDefault();
+            const searchText = document.querySelector('#search-input').value;
+            refreshBooks(searchText);
+        }
+    });
+
+    document.querySelector('#search-input').addEventListener('keyup', (event) => {
+        if (event.key === 'Enter') {
+            const searchText = event.target.value;
+            refreshBooks(searchText);
+        }
+    });
+
+    document.querySelector('#sortByName').addEventListener('click', () => {
+        const searchText = document.querySelector('#search-input').value;
+        refreshBooks(searchText, true, false);
+    });
+
+    document.querySelector('#sortByRating').addEventListener('click', () => {
+        const searchText = document.querySelector('#search-input').value;
+        refreshBooks(searchText, false, true);
+    });
+
+    refreshBooks();
+
+</script>
+
+{% endblock %}
