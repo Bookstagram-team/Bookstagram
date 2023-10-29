@@ -1,0 +1,235 @@
+{% extends 'base.html' %}
+
+{% block navbar %}
+{% load static %}
+<!-- CSS Bootstrap -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+<!-- CSS Custom File -->
+<link href="{% static 'css/homepage.css' %}" rel="stylesheet">
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <!-- Toggler -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- Navbar items -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'main:show_main' %}">Home</a>
+                </li>
+                <li class="event">
+                  <a class="nav-link" href="{% url 'communities:show_communities' %}">Event</a>
+              </li>
+              <li class="discussion">
+                <a class="nav-link" href="{% url 'communities:show_books' %}">Booklist</a>
+            </li>
+            </ul>
+            <!-- Navbar search box and user -->
+            {% if user.is_authenticated %}
+            <div class="nav-item dropdown" style="margin-left: 10px;">
+                <a class="nav-link dropdown-toggle text-light" data-bs-toggle="dropdown" role="buton" aria-expanded="false"><i class="fas fa-user"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="{% url 'main:profile' request.user.profile.pk %}">Profile</a></li>
+                    <li><a class="dropdown-item" href="{% url 'main:logout' %}">Sign Out</a></li>
+                </ul>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</nav>
+{% endblock navbar %}
+{% block content %}
+    <div class="container mx-auto">
+        <h1 class="text-4xl font-semibold mb-6 text-center">EVENTS</h1>
+        
+        <!-- Bagian Pencarian dan Penyaringan -->
+        <div class="row mt-2">
+            <!-- Pencarian Event -->
+            <div class="col-md-6">
+                <input type="text" class="form-control" id="search_event" onkeyup="filterEvents()" placeholder="Search event name..">
+            </div>
+            
+            <!-- Penyaringan Tanggal -->
+            <div class="col-md-3">
+                <input type="date" class="form-control" id="filter_date" onchange="filterEvents()" placeholder="Filter by date">
+            </div>
+
+            <!-- Penyaringan Harga -->
+            <div class="col-md-3">
+                <select class="form-select" id="sort" onchange="sortEvents()">
+                    <option value="">-- Select Sorting --</option>
+                    <option value="price">Sort by price</option>
+                    <option value="name">Sort by name</option>
+                    <option value="date">Sort by date</option>
+                </select>                
+            </div>
+        </div>
+
+        <!-- Tombol Tambah Event -->
+        {% if request.user.is_employee %}
+        <div class="row mt-2">
+            <div class="col text-center">
+                <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Event</button>
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Kontainer untuk Kartu Event -->
+        <div id="event_card_row" class="row mt-3"></div>
+    </div>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Event</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="form_event" onsubmit="return false;">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="nama_event" class="col-form-label">Nama Event:</label>
+                            <input type="text" class="form-control" id="nama_event" name="nama_event"></input>
+                        </div>
+                        <div class="mb-3">
+                            <label for="tanggal_pelaksanaan" class="col-form-label">Tanggal Pelaksanaan:</label>
+                            <input type="date" class="form-control" id="tanggal_pelaksanaan" name="tanggal_pelaksanaan"></input>
+                        </div>
+                        <div class="mb-3">
+                            <label for="harga" class="col-form-label">Harga:</label>
+                            <input type="number" class="form-control" id="harga" name="harga"></input>
+                        </div>
+                        <div class="mb-3">
+                            <label for="foto" class="col-form-label">Foto:</label>
+                            <input type="text" class="form-control" id="foto" name="foto"></input>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="button_add_event" data-bs-dismiss="modal">Add Event</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row" id="event_card_row"></div>
+    </div>
+      
+    <script>
+        async function getEvents() {
+            return fetch("{% url 'communities:get_event_json' %}").then((res) => res.json());
+        }
+
+        async function deleteProduct(productId) {
+            try {
+                const response = await fetch("{% url 'communities:delete_product_ajax' 0 %}".replace('0', productId), {
+                method: 'POST',
+                });
+        
+                if (response.ok) {
+                refreshEvents();
+                } else {
+                console.error('Gagal menghapus produk.');
+                }
+            } catch (error) {
+                console.error('Terjadi kesalahan:', error);
+            }
+        }
+
+        async function filterEvents() {
+            const searchValue = document.getElementById("search_event").value.toLowerCase();
+            const filterDate = document.getElementById("filter_date").value;
+            let events = await getEvents();
+
+            if (searchValue) {
+                events = events.filter(event => event.fields.nama_event.toLowerCase().includes(searchValue));
+            }
+
+            if (filterDate) {
+                events = events.filter(event => event.fields.tanggal_pelaksanaan === filterDate);
+            }
+
+            displayEvents(events);
+        }
+
+        async function sortEvents() {
+            const sortValue = document.getElementById("sort").value;
+            let events = await getEvents();
+
+            switch (sortValue) {
+                case "name":
+                    events.sort((a, b) => a.fields.nama_event.localeCompare(b.fields.nama_event));
+                    break;
+                case "price":
+                    events.sort((a, b) => a.fields.harga - b.fields.harga);
+                    break;
+                case "date":
+                    events.sort((a, b) => new Date(a.fields.tanggal_pelaksanaan) - new Date(b.fields.tanggal_pelaksanaan));
+                    break;
+                default:
+                    // Logic default jika diperlukan
+                    break;
+            }
+
+            displayEvents(events);
+        }
+
+        function displayEvents(events) {
+            const eventCardRow = document.getElementById("event_card_row");
+            eventCardRow.innerHTML = "";
+
+            events.forEach((item, index) => {
+                if (index % 3 === 0) {
+                    const cardRow = document.createElement("div");
+                    cardRow.classList.add("row");
+                    eventCardRow.appendChild(cardRow);
+                }
+
+                const cardCol = document.createElement("div");
+                cardCol.classList.add("col-md-4");
+                cardCol.innerHTML = `
+                    <div class="card mb-3 bg-dark text-white">
+                        <img class="card-img-top" src="${item.fields.foto}" alt="Gambar Event ${item.fields.nama_event}">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">${item.fields.nama_event}</h5>
+                            <hr class="hr" />
+                            <p class="card-text">Tanggal Pelaksanaan: ${item.fields.tanggal_pelaksanaan}</p>
+                            <p class="card-text">Harga: ${item.fields.harga}</p>
+                            {% if request.user.is_employee %}
+                            <a onclick="deleteProduct(${item.pk})" class="btn btn-sm btn-danger">Delete</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                `;
+
+                const cardRow = eventCardRow.lastChild;
+                cardRow.appendChild(cardCol);
+            });
+        }
+
+        async function refreshEvents() {
+            const events = await getEvents();
+            displayEvents(events);
+        }
+
+        function addEvent() {
+            fetch("{% url 'communities:add_event_ajax' %}", {
+                method: "POST",
+                body: new FormData(document.querySelector('#form_event'))
+            }).then(refreshEvents);
+      
+            document.getElementById("form_event").reset();
+            return false;
+        }
+      
+        document.getElementById("button_add_event").onclick = addEvent;
+        refreshEvents();
+    </script>      
+{% endblock content %}

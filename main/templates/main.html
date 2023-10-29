@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+
+{% block title %}Booklist{% endblock %}
+{% block content %}
+<html>
+    <head>
+        <title>Main Page</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/1911da586c.js" crossorigin="anonymous"></script>
+    </head>
+    <style>
+        *{
+            margin:0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            
+        }
+        body {
+            background-image: url(https://scontent.fcgk27-1.fna.fbcdn.net/v/t39.30808-6/395595275_1070091551077539_8658657699414050588_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=5f2048&_nc_ohc=mDosr8H7oZYAX8HP4LP&_nc_oc=AQmouyA1dWkNu4BeBkrhIHsl7QwDGbjKlK9KdvJevmQuB0eG29EJUgs0RsFs3Qp1esc&_nc_ht=scontent.fcgk27-1.fna&oh=00_AfB0A7rrsUXkwp9J1ZTQIoyxs1gWrkcXFvPcxq-2YKxrEQ&oe=6540A233);
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            z-index: -1;
+        }
+        .banner{
+            width: 100%;
+            height: 60vh;
+            background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url(https://scontent.fcgk27-1.fna.fbcdn.net/v/t39.30808-6/395539262_1070091561077538_832627610736211674_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=5f2048&_nc_ohc=WO8zxSBPgvIAX_mp5Oc&_nc_ht=scontent.fcgk27-1.fna&oh=00_AfAPhuq6KcJn5jFX9j7R5ASsfmBMMHZN2pQ4cXL4H5Dl_Q&oe=6541A70D);
+            background-size: cover;
+            background-position: center;
+            z-index: 1;
+        }
+        .text-box{
+            z-index: 0;
+            width: 100%;
+            color: #E59C35;
+            position: absolute;
+            top: 300px;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+        .text-box h1{
+            font-size: 60px;
+        }
+        .text-box p{
+            font-size: 20px;
+            margin: 10px 0 40px;
+            color: white;
+        }
+        .text{
+            width: 80%;
+            color: #727C48;
+            margin: auto;
+            text-align: center;
+            padding-top: 100px;
+        }
+        h1{
+            font-size: 40px;
+            font-weight: 700;
+        }
+        p{
+            font-size: 20px;
+            font-weight: 300;
+            line-height: 22px;
+            padding: 10px;  
+        }
+
+        .text-goal{
+            margin: 5%;
+            display: flex;
+            justify-content: space-between;
+
+        }
+        .desc{
+            flex-basis: 50%;
+            background: white;
+            border-radius: 10px;
+            margin: 2%;
+            margin-bottom: 5%;
+            padding: 5px 5px;
+            box-sizing: border-box;
+            transition: 0.7s;
+        }
+        h3{
+            text-align: center;
+            font-size: 20px;
+            font-weight: 600;
+            margin: 10px 0;
+        }
+        .desc:hover{
+            box-shadow: 0 0 20px 0px rgba(0,0,0,0.7)
+
+        }
+        .to-do{
+            position: absolute;
+            top: 1120px;
+            left: 20px;
+            right: 20px;
+            padding: 5px;
+            border: 1px solid #EEEEEE;
+            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(https://scontent.fcgk27-1.fna.fbcdn.net/v/t39.30808-6/395860977_1070091527744208_5916102195230514211_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=5f2048&_nc_ohc=jolAjbWMedgAX-8beIe&_nc_ht=scontent.fcgk27-1.fna&oh=00_AfBhBWthPR9akj3D6I5KTI83HKXWdLhSS_mjesJUmP6qsQ&oe=654287CB);
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        .panel h2{
+            font-size: 40px;
+            font-weight: 900;
+            text-align: center;
+        }
+        .journey{
+            margin-top: 100px;
+        }
+        .card-container {
+            display: flex;
+            overflow-x: scroll;
+            flex-wrap: nowrap;
+            white-space: nowrap;
+            max-width: 100%;
+            margin: 0; /* Add this line */
+            padding: 0; /* Add this line */
+        }
+        .card{
+            flex-basis: 30%;
+            border-radius: 10px;
+            min-width: 200px; /* Set your desired card width here */
+            margin-bottom: 30px;
+            margin-left: 0;
+            margin-right: 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .layer{
+            background: transparent;
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            text-align: center;
+            transition: 0.3s;
+        }
+        .layer:hover{
+            background: rgba(0,0,0,0.5);
+        }
+        .layer h3{
+            width: 100%;
+            font-weight: 900;
+            color: white;
+            font-size: 15px;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            position: absolute;
+            opacity: 0;
+            transition: 0.5s;
+            white-space: normal;
+            word-wrap: break-word;
+        }
+        .layer:hover h3{
+            bottom: 20%;
+            opacity:1 ;
+        }
+        .layer i{
+            width: 100%;
+            font-weight: 900;
+            color: white;
+            font-size: 15px;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            position: absolute;
+            opacity: 0;
+            transition: 0.5s;
+            padding-left: 5px;
+            padding-right: 5px;
+            white-space: normal;
+            word-wrap: break-word;
+        }
+        .layer:hover i{
+            bottom: 65%;
+            opacity:1 ;
+        }
+        .add-rating-button{
+            justify-content: space-between;
+            padding: 5%;
+            top: 30px;
+            
+        }
+        .modal-content{
+            position: relative;
+            background: #fff;
+            padding: 25px 50px 35px;
+            border-radius: 25px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+
+        }
+        .modal-header {
+            font-size: 22px;
+            color: #dadada;
+            font-weight: 500;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .modal-body .stars {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            justify-content: center;
+            flex-direction: row-reverse;
+        }
+        .stars input{
+            display: none;
+        }
+        .stars label{
+            font-size: 40px;
+            color: #444;
+            padding: 10px;
+            float: left;
+            transition: all 0.3s ease;
+
+        } 
+        .stars input:not(:checked) ~ label:hover ~ label,       
+        .stars input:not(:checked) ~ label:hover {
+            color: #fd4;
+        }
+
+        input:checked ~ label{
+            color: #fd4;
+        }
+
+        .comments{
+            width: 80%;
+            color: #727C48;
+            font-weight: 800;
+            margin: auto;
+            text-align: center;
+            padding-top: 100px;
+            
+        }
+        .comment-col{
+            width: 1000px;
+            border-radius: 5px ;
+            margin-bottom: 5%;
+            text-align: left;
+            background-color: #fdfaf6;
+            padding: 5px;
+            cursor: pointer;
+        }
+        .card-container-comment {
+            display: flex;
+            flex-wrap: wrap;
+            overflow-y: scroll;
+            max-width: 100%;
+        }
+        
+    </style>
+
+    <body>
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Share your thoughts</h1>
+                    </div>
+                    <div class="modal-body">
+                        <form id="form" onsubmit="return false;">
+                            {% csrf_token %}
+                            <div class="mb-3">
+                                <div class="stars">
+                                    <input type="radio" name="rate" id="rate-5" value="5">
+                                    <label for="rate-5" class="fa-solid fa-star"></label>
+                                    <input type="radio" name="rate" id="rate-4" value="4">
+                                    <label for="rate-4" class="fa-solid fa-star"></label>
+                                    <input type="radio" name="rate" id="rate-3" value="3">
+                                    <label for="rate-3" class="fa-solid fa-star"></label>
+                                    <input type="radio" name="rate" id="rate-2" value="2">
+                                    <label for="rate-2" class="fa-solid fa-star"></label>
+                                    <input type="radio" name="rate" id="rate-1" value="1">
+                                    <label for="rate-1" class="fa-solid fa-star"></label>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="name" class="col-form-label">Name:</label>
+                                <input type="text" class="form-control" id="name" name="name"></input>
+                            </div>
+                            <div class="mb-3">
+                                <label for="description" class="col-form-label">Describe your experience:</label>
+                                <textarea class="form-control" id="description" name="description"></textarea>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" id="button_save_change" data-bs-dismiss="modal">Save Changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <section class="banner">
+            <div class="text-box">
+                <h1>Welcome to Bookstagram!</h1>
+                
+                <p>Let the power of words guide you on your literary journey</p>
+                {% if request.user.is_employee %}
+                    <p>Hi!, author</p>
+                {% endif %}
+            </div>
+
+        </section>
+        <section class="text">
+            <h1 style="font-size: 60px;">Our Goals</h1>
+            <div class="text-goal">
+                <div class="desc">
+                    <h3>Empowering Emerging Authors</h3>
+                    <p>It's a world where new voices are heard, fresh stories are celebrated, and literary passion knows no bounds</p>
+                </div>
+                <div class="desc">
+                    <h3>Elevating Author-Reader Engagement</h3>
+                    <p>We facilitates direct interaction between authors and readers, enriching the reading experience</p>
+                </div>
+                <div class="desc">
+                    <h3>Fostering a Book Community</h3>
+                    <p>Dive into a world where bookworms unite, stories intertwine, and conversations flourish</p>
+                </div>
+                <div class="desc">
+                    <h3>Enchanting the Community to <br> Embrace Reading</h3>
+                    <p>Beautifies the realm of reading, alluring more individuals to immerse themselves in the world of books.</p>
+                </div>
+                <div class="to-do">
+                    <div class="text-goal">
+                        <div class="panel">
+                            <h2>Share your thoughts, inspire fellow readers, and contribute to a vibrant literary community</h2>
+                            <p>Start your journey now</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="journey">
+            <h1 style="text-align: center; color: white;">Hello World!</h1>
+        </section>
+        <section class="journey">
+            <h2 style="padding: 30px 50px 30px 50px; font-size: 40px; background-color: #E59C35; color: white; margin: 200px 0px 70px 0px;">Our Collection</h2>
+            <div class="d-flex card-container" id="row" style="margin-left:5%;padding:1px 16px;"></div>
+        </section>
+        <section class="comments">
+            <h2>Leave us Comment</h2>
+            <p>Thank you for your interest, and we eagerly await your message. We value your questions and feedback regarding our content.</p>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" style="margin-bottom: 100px;" data-bs-target="#exampleModal">Click Here</button>
+            <div class="d-flex card-container-comment" id="comment_table" style="padding:1px 16px;"></div>
+        </section>
+    </body>
+    <script>
+        // fungsi untuk dapetin dan nampilin buku dari dataset
+        async function getBooks() {
+            return fetch("{% url 'booklist:get_books' %}").then((res) => res.json())
+        }
+        async function getItem() {
+        return fetch("{% url 'main:get_item_json' %}").then((res) => res.json())
+        }
+        async function refreshBooks() {
+            document.getElementById("row").innerHTML = "";
+            const books = await getBooks();
+
+            books.forEach((item, index) => {
+                const rating = item.fields.rating/2;
+                const id = item.fields.Urutan;
+                const bookCard = `
+                <div class="col-md-4">
+                    <div class="card mb-4" style="max-width: 200px;">
+                        <img src="${item.fields.ImageL}" alt="Book Image" style="width: 100%; height: 300px; object-fit: cover;">
+                        <div class="layer">
+                            <h3>${item.fields.Judul}</h3>
+                            <i>${rating}/5 </i>
+                            <br>
+                            <i class="fa-solid fa-star" style="color: yellow;"></i>
+                        </div>
+                    </div>
+                </div>`;
+                const row = document.getElementById("row");
+                row.innerHTML += bookCard;
+            });
+        }
+    
+        refreshBooks();
+
+        async function refreshProducts() {
+            document.getElementById("comment_table").innerHTML = "";
+            const item = await getItem();
+
+            item.forEach((item) => {
+                const commentCard = `
+                <div class="col-md-4">
+                    <div class="card mb-4 comment-col" style="max-width: 100%;" id="row">
+                        <h3>${item.fields.name} (${item.fields.rate}/5)</h3>
+                        <p>${item.fields.comments}</p>
+                    </div>
+                </div>`;
+                const comment_table = document.getElementById("comment_table");
+                comment_table.innerHTML += commentCard;
+                
+            });
+            
+        }
+
+        refreshProducts()
+
+        function addComment() {
+            const formData = new FormData(document.querySelector('#form'));
+            const selectedRating = parseInt(document.querySelector('input[name="rate"]:checked').value);
+            const name = document.querySelector('#name').value;
+            formData.append('name', name);
+            const desc = document.querySelector('#description').value;
+            formData.append('description', desc);
+            formData.append('rating', selectedRating);
+
+            fetch("{% url 'main:add_rating_ajax' %}", {
+                method: "POST",
+                body: formData
+            }).then(refreshProducts)
+
+            document.getElementById("form").reset()
+            return false
+        }
+
+        document.getElementById("button_save_change").onclick = addComment
+
+
+
+    </script>
+</html>
+{% endblock content%}
