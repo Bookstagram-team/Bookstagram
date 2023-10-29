@@ -2,7 +2,7 @@ import datetime
 from main.forms import ItemForm
 from main.models import Item
 from django.urls import reverse
-from django.http import HttpResponseRedirect, HttpResponse, HttpResponseNotFound;
+from django.http import HttpResponseRedirect, HttpResponse, HttpResponseNotFound,JsonResponse;
 from django.core import serializers
 from django.shortcuts import redirect, render
 from django.contrib import messages  
@@ -17,6 +17,7 @@ from .models import User, UserProfile
 from django.urls import reverse_lazy
 from django.views.generic.edit import UpdateView, DeleteView
 from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
+from .forms import AddBookForm
 from book.models import Book
 
 # Akun1 -> Ikan, 1234567%
@@ -153,6 +154,38 @@ def get_item_json(request):
     item = Item.objects.filter(user=request.user)
     return HttpResponse(serializers.serialize('json', item))
 
+def get_book_json(request):
+    Book_item = Book.objects.all()
+    return HttpResponse(serializers.serialize('json',Book_item ))
+
+def add_book(request):
+    if request.method == 'POST':
+        form = AddBookForm(request.POST)
+        if form.is_valid():
+            form.save()
+            # Setelah buku ditambahkan, arahkan kembali ke halaman utama (main.html)
+            return redirect('main:catalogue_page')
+
+    form = AddBookForm()
+    return render(request, 'add_book.html', {'form': form})
+
+def book_detail(request, book_id):
+    book = Book.objects.get(pk=book_id)
+    data = {
+        'Urutan': book.Urutan,
+        'ISBN': book.ISBN,
+        'Judul': book.Judul,
+        'Penulis': book.Penulis,
+        'Publikasi': book.Publikasi,
+        'Publisher': book.Publisher,
+        'ImageS': book.ImageS,
+        'ImageM': book.ImageM,
+        'ImageL': book.ImageL,
+        'Rating': book.rating,
+    }
+
+    return render(request, 'book_detail.html', data)
+
 
 @csrf_exempt
 def add_item_ajax(request):
@@ -169,10 +202,35 @@ def add_item_ajax(request):
 
     return HttpResponseNotFound()
 
+def catalogue_view(request):
+    # Logika Anda untuk menyiapkan data atau melakukan operasi lainnya
+    return render(request, 'catalogue.html')
 
 
+def sort_book(request):
+    sort_order = request.GET.get('sort', 'none')
+    if sort_order == 'a_z':
+        books = Book.objects.order_by('Judul')
+    elif sort_order == 'z_a':
+        books = Book.objects.order_by('-Judul')
+    else:
+        books = Book.objects.all()
+    data = [{'fields': {
+        'Urutan': book.Urutan,
+        'ISBN': book.ISBN,
+        'Judul': book.Judul,
+        'Penulis': book.Penulis,
+        'Publikasi': book.Publikasi,
+        'Publisher': book.Publisher,
+        'ImageS': book.ImageS,
+        'ImageM': book.ImageM,
+        'ImageL': book.ImageL,
+        'Rating': book.rating,
+    }} for book in books]
+    return JsonResponse(data, safe=False)
 
 
+  
 #TAMBAHAN BARU
 
 class UserSearch(View):
@@ -234,5 +292,6 @@ class ProfileEditView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     def test_func(self):
         profile = self.get_object()
         return self.request.user == profile.user
+    
 
 

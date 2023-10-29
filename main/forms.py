@@ -7,11 +7,18 @@ from django import forms
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from .models import User
+from book.models import Book
+# from .models import Book
 
 class ItemForm(ModelForm):
     class Meta:
         model = Item
         fields = ["name", "amount", "description"]
+
+class AddBookForm(forms.ModelForm):
+    class Meta:
+        model = Book
+        fields = '__all__'
 
 
 #untuk user

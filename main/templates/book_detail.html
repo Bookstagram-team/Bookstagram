@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+
+  .book-cover {
+      max-width: 300px;
+      margin: 0 auto;
+      border: 2px solid #D4AC89;
+      border-radius: 10px;
+      background-color: #22642b; 
+  }
+  .book-detail-container {
+    /* background-color: #22642b; Warna latar belakang di sini */
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+  }
+
+  .book-detail-header {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 20px 0;
+    color: #D4AC89; /* Warna teks judul */
+  }
+
+  .book-title {
+      font-family: 'Perpetua', serif;
+      font-size: 28px;
+      color: #727C48;
+      margin-top: 20px;
+  }
+
+  .book-info {
+      font-size: 18px;
+      margin-top: 10px;
+  }
+
+  .back-link {
+      display: block;
+      text-align: center;
+      margin-top: 20px;
+      font-size: 16px;
+      text-decoration: none;
+      color: #727C48;
+  }
+</style>
+
+<div class="book-detail-container">
+  <h1 class="book-detail-header">Detail Buku</h1>
+    <img class="book-cover" src="{{ ImageL }}" alt="Cover Buku">
+    <h2 class="book-title">{{ Judul }}</h2>
+    <p class="book-info">Penulis: {{ Penulis }}</p>
+    <p class="book-info">Tahun Publikasi: {{ Publikasi }}</p>
+    <p class="book-info">Penerbit: {{ Publisher }}</p>
+    <p class="book-info">Rating: {{ Rating }}</p>
+    <p class="book-info">ISBN: {{ ISBN }}</p>
+    <a class="back-link" href="{% url 'main:catalogue_page' %}">Kembali ke Katalog Buku</a>
+</div>
+{% endblock content %}

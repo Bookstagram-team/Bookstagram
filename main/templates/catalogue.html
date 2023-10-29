@@ -1,1 +1,196 @@
 {% extends 'base.html' %}
+
+{% block content %}
+<style>
+    .katalog-header {
+        font-family: 'Perpetua', serif;
+        font-size: 40px; /* Sesuaikan ukuran font sesuai kebutuhan */
+        color: #D4AC89; /* Pilih warna dari palet */
+        text-align: center; /* Untuk mengatur teks di tengah */
+        margin-bottom: 20px; /* Atur jarak bawah sesuai kebutuhan */
+        background-color: #727C48;
+        padding: 10px;
+    }
+
+    .centered-container {
+        display: flex;
+        justify-content: center;
+        height: 100%;
+    }
+
+    .card-container {
+        display: grid;
+        gap: 10px;
+        justify-items: center;
+        width: 100%;
+        margin: 0 10vw;
+    }
+
+    .card {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        background-color: #E1C78F; 
+    }
+
+    .card-img-container {
+        /* Mengatur tinggi gambar ke tinggi yang diinginkan */
+        height: 420px; /* Sesuaikan sesuai kebutuhan */
+        position: relative;
+    }
+
+    .card-img-top {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .card-body {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
+    }
+
+    .card-text-container {
+        margin-top: auto;
+    }
+
+    .card-text {
+        margin: 0;
+        font-family: 'Perpetua', serif;
+        font-size: 20px;
+        font-weight: 600;
+    }
+
+    .btn-primary {
+        margin-top: auto; /* Menggeser tombol ke bawah */
+        width: fit-content; /* Mengatur lebar tombol sesuai kontennya */
+        align-self: flex-end; /* Mengatur posisi tombol di kanan bawah */
+        appearance: button;
+        background-color: transparent;
+        background-image: linear-gradient(to bottom, #fff, #f8eedb);
+        border: 0 solid #e5e7eb;
+        border-radius: .5rem;
+        box-sizing: border-box;
+        color: #482307;
+        column-gap: 1rem;
+        cursor: pointer;
+        display: flex;
+        font-family: ui-sans-serif, system-ui, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+        font-size: 80%;
+        font-weight: 700;
+        line-height: 24px;
+        margin: 0;
+        outline: 2px solid transparent;
+        padding: 1rem 1.5rem;
+        /* text-align: center; */
+        text-transform: none;
+        transition: all .1s cubic-bezier(.4, 0, .2, 1);
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+        box-shadow: -6px 8px 10px rgba(81, 41, 10, 0.1), 0px 2px 2px rgba(81, 41, 10, 0.2);
+    }
+    
+
+    @media (min-width: 1024px) {
+        .card-container {
+            grid-template-columns: repeat(5, 1fr);
+        }
+    }
+
+    @media (min-width: 768px) and (max-width: 1023px) {
+        .card-container {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    @media (min-width: 320px) and (max-width: 767px) {
+        .card-container {
+            grid-template-columns: repeat(5, 1fr);
+        }
+    }
+</style>
+
+
+<h2 class="katalog-header">Katalog Buku</h2>
+
+<button type="button" class="btn btn-secondary" id="sort_a_z">A to Z</button>
+<button type="button" class="btn btn-secondary" id="sort_z_a">Z to A</button>
+
+<ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="#" id="sort_a_z">A to Z</a></li>
+    <li><a class="dropdown-item" href="#" id="sort_z_a">Z to A</a></li>
+    <li>
+        <hr class="dropdown-divider">
+    </li>
+    <li><a class="dropdown-item" href="#" id="sort_none">None</a></li>
+</ul>
+
+<a href="{% url 'main:add_book' %}" class="btn btn-primary">Tambahkan Buku</a>
+<div class="centered-container">
+    <div id="book_card" class="card-container"></div>
+</div>
+
+<script>
+    async function getProducts() {
+        return fetch("{% url 'main:get_book_json' %}").then((res) => res.json());
+    }
+
+    async function refreshProducts() {
+        const cardContainer = document.querySelector(".card-container");
+        cardContainer.innerHTML = "";
+
+        const books = await getProducts();
+        let htmlString = "";
+        books.forEach((item) => {
+            var urlbook = "{% url 'main:book_detail' 0 %}".replace("0", item.fields.Urutan + 1);
+            htmlString += `
+                <div class="card" data-year="${item.fields.year}">
+                    <div class="card-img-container">
+                        <img class="card-img-top" src="${item.fields.ImageL}" alt="Card image cap">
+                    </div>
+                    <div class="card-body">
+                        <div class="card-text-container">
+                            <p class="card-text">${item.fields.Judul}</p>
+                            {% if request.user.is_authenticated %}
+                            <a href="${urlbook}" class="btn btn-primary">Detail</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>`;
+        });
+
+        cardContainer.innerHTML = htmlString;
+    }
+
+    refreshProducts();
+
+
+    document.getElementById("sort_a_z").addEventListener("click", function() {
+        fetch(`{% url 'main:sort_book' %}?sort=a_z`).then((res) => res.json()).then((data) => {
+            refreshProducts(data);
+            document.getElementById("filter_text").style.display = "block";
+            document.getElementById("filter_text").innerText = "Filter: A to Z";
+        });
+    });
+
+    document.getElementById("sort_z_a").addEventListener("click", function() {
+        fetch(`{% url 'main:sort_book' %}?sort=z_a`).then((res) => res.json()).then((data) => {
+            refreshProducts(data);
+            document.getElementById("filter_text").style.display = "block";
+            document.getElementById("filter_text").innerText = "Filter: Z to A";
+        });
+    });
+
+    document.getElementById("sort_none").addEventListener("click", function() {
+        getProducts().then(refreshProducts);
+        document.getElementById("filter_text").style.display = "none";
+    });
+
+
+
+</script>
+{% endblock content %}
