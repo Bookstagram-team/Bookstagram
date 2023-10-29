@@ -24,6 +24,11 @@ class Item(models.Model):
     amount = models.IntegerField()
     description = models.TextField()
 
+class Comment(models.Model):
+	name = models.CharField(max_length=255)
+	date_added = models.DateField(auto_now_add=True)
+	rate = models.IntegerField()
+	comments = models.TextField()
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):

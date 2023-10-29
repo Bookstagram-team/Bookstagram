@@ -1,8 +1,10 @@
 import datetime
+
+from django.forms import ValidationError
 from main.forms import ItemForm
-from main.models import Item
+from main.models import Item, Comment
 from django.urls import reverse
-from django.http import HttpResponseRedirect, HttpResponse, HttpResponseNotFound;
+from django.http import HttpResponseBadRequest, HttpResponseRedirect, HttpResponse, HttpResponseNotFound, JsonResponse;
 from django.core import serializers
 from django.shortcuts import redirect, render
 from django.contrib import messages  
@@ -146,8 +148,24 @@ def delete_item(request, id):
 
 
 def get_item_json(request):
-    item = Item.objects.filter(user=request.user)
+    item = Comment.objects.all()
     return HttpResponse(serializers.serialize('json', item))
+
+
+@csrf_exempt
+def add_rating_ajax(request):
+    if request.method == 'POST':
+        try:
+            name = request.POST.get("name")
+            rating = request.POST.get("rating")
+            comments = request.POST.get("description")
+            new_comment = Comment(name=name, rate=rating, comments=comments)
+            new_comment.save()
+            return JsonResponse({"message": "Comment created successfully"}, status=201)
+        except ValidationError:
+            return HttpResponseBadRequest("Invalid data")
+    else:
+        return HttpResponseNotFound()
 
 
 @csrf_exempt
