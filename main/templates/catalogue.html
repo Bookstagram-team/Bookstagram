@@ -128,11 +128,13 @@
     </li>
     <li><a class="dropdown-item" href="#" id="sort_none">None</a></li>
 </ul>
-
+{% if request.user.is_customer %}
 <a href="{% url 'main:add_book' %}" class="btn btn-primary">Tambahkan Buku</a>
+{% endif %}
 <div class="centered-container">
     <div id="book_card" class="card-container"></div>
 </div>
+
 
 <script>
     async function getProducts() {
