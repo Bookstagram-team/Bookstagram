@@ -1,6 +1,5 @@
 from django.urls import path
-from main.views import add_rating_ajax, show_main, create_item, show_xml, show_json, show_xml_by_id, show_json_by_id 
-from main.views import register, login_user, logout_user, edit_item, delete_item, get_item_json, add_item_ajax
+from main.views import *
 from main.views import UserSearch, ProfileView, ProfileEditView, display_books
 app_name = 'main'
 
@@ -23,6 +22,9 @@ urlpatterns = [
     path('profile/edit/<int:pk>/', ProfileEditView.as_view(), name='profile-edit'),
     #buku
     path('books/', display_books, name='display_books'),
-
-
+    path('get_book/', get_book_json, name='get_book_json' ),
+    path('add_book/', add_book, name='add_book'),
+    path('book/<int:book_id>/', book_detail, name='book_detail'),
+    path('catalogue/', catalogue_view, name='catalogue_page'),
+    path('sort_book/', sort_book, name='sort_book'),
 ]

@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+  .katalog-header {
+      font-family: 'Perpetua', serif;
+      font-size: 40px; /* Sesuaikan ukuran font sesuai kebutuhan */
+      color: #D4AC89; /* Pilih warna dari palet */
+      text-align: center; /* Untuk mengatur teks di tengah */
+      margin-bottom: 20px; /* Atur jarak bawah sesuai kebutuhan */
+      background-color: #727C48;
+      padding: 10px;
+
+      
+  }
+  .btn-primary {
+        margin-top: auto; /* Menggeser tombol ke bawah */
+        width: fit-content; /* Mengatur lebar tombol sesuai kontennya */
+        align-self: flex-end; /* Mengatur posisi tombol di kanan bawah */
+        appearance: button;
+        background-color: transparent;
+        background-image: linear-gradient(to bottom, #fff, #f8eedb);
+        border: 0 solid #e5e7eb;
+        border-radius: .5rem;
+        box-sizing: border-box;
+        color: #482307;
+        column-gap: 1rem;
+        cursor: pointer;
+        display: flex;
+        font-family: ui-sans-serif, system-ui, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+        font-size: 80%;
+        font-weight: 700;
+        line-height: 24px;
+        margin: 0;
+        outline: 2px solid transparent;
+        padding: 1rem 1.5rem;
+        /* text-align: center; */
+        text-transform: none;
+        transition: all .1s cubic-bezier(.4, 0, .2, 1);
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+        box-shadow: -6px 8px 10px rgba(81, 41, 10, 0.1), 0px 2px 2px rgba(81, 41, 10, 0.2);
+    }
+</style>
+  <h2 class="katalog-header">Tambahkan Buku Baru</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="btn-primary" type="submit">Simpan</button>
+  </form>
+  <a href="{% url 'main:catalogue_page' %}">Kembali ke Katalog Buku</a>
+{% endblock content %}
