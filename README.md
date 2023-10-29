@@ -31,14 +31,14 @@ Dalam upaya meningkatkan literasi di Indonesia, kami mempersembahkan aplikasi "B
 Halaman utama setelah pengguna login. Halaman ini berisi keterangan singkat tentang aplikasi (tujuan aplikasi + apa yang bisa dilakukan di aplikasi ini) , menampilkan list buku dalam website, dan testimoni.
 - Profil Pengguna (oleh Sri Saraswati Widhisari)  
 
-Halaman ini berisi form user yang menampilkan foto profil, role, dan bio pengguna. Selain itu terdapatt tombol untuk spam meme of the day. Di halaman ini, pengguna juga langsung menampilkan filter buku dengan judul yang memuat huruf pertama username pengguna. 
+Halaman ini berisi form user yang menampilkan foto profil, role (jika author maka tulisannya author, kalau pembaca maka bio berupa reader), dan bio pengguna. Selain itu terdapat tombol untuk spam meme of the day. Di halaman ini, pengguna juga langsung menampilkan filter buku dengan judul yang memuat huruf pertama username pengguna. 
 - Forum diskusi (oleh Edwin Daniel Toliansa)  
 
 Halaman ini menampilkan urutan forum diskusi berbentuk card. Ketika card diklik akan muncl diskusi seperti bubble di stackoverflow. Satu komen bisa direply, like dan dislike forum lainnya. Di halaman ini, akan ada button “add forum discussion”, yang jika diklik oleh pembaca akan menampilkan card forum berupa nama, penulis forum, waktu dibuatya forum, serta dua text field yang seharunsya berisi judul buku dan isi forum.
 
 - Katalog Buku (oleh Scudetto Ciano Syam) 
 
-Halaman ini menampilkan buku-buku yang ada pada aplikasi juga dapat melihat informasi detail mengenai buku tersebut, halaman ini juga memiliki fitur menambahkan buku.
+Halaman ini menampilkan buku-buku yang ada pada aplikasi juga dapat melihat informasi detail mengenai buku tersebut, halaman ini juga memiliki fitur menambahkan buku jika dia author.
 - Communities (oleh Darryl Nawawi )   
 
  Halaman ini interfacenya seperti feed, menampilkan event - event yang akan ada, yang mana penulis buku dapat menambahkan acara communities.
