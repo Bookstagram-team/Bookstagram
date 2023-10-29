@@ -3,6 +3,7 @@ from django.contrib.auth.models import AbstractUser
 from django.contrib.auth import get_user_model
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from django.utils import timezone
 
 class User(AbstractUser):
     is_customer = models.BooleanField('Is customer', default=False)
@@ -24,6 +25,12 @@ class Item(models.Model):
     amount = models.IntegerField()
     description = models.TextField()
 
+class Post(models.Model):
+	title = models.TextField()
+	body = models.TextField()
+	created_on = models.DateTimeField(default=timezone.now)
+	author = models.ForeignKey(User, on_delete=models.CASCADE)
+
 class Comment(models.Model):
 	name = models.CharField(max_length=255)
 	date_added = models.DateField(auto_now_add=True)
@@ -38,3 +45,12 @@ def create_user_profile(sender, instance, created, **kwargs):
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
 	instance.profile.save()
+
+class Reply(models.Model):
+    post = models.ForeignKey('main.Post', on_delete=models.CASCADE)  
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    text = models.TextField()
+    created_date = models.DateTimeField(default=timezone.now)
+
+    def __str__(self):
+        return f'Reply by {self.author.username} on {self.created_date}'

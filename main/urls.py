@@ -26,5 +26,10 @@ urlpatterns = [
     path('add_book/', add_book, name='add_book'),
     path('book/<int:book_id>/', book_detail, name='book_detail'),
     path('catalogue/', catalogue_view, name='catalogue_page'),
+    path('discussion/', discussion_view, name='discussion_page'),
     path('sort_book/', sort_book, name='sort_book'),
+    path('handle_reaction/<int:post_id>/<str:reaction>/', handle_reaction, name='handle_reaction'),
+    path('reply/<int:post_id>/', reply_to_post, name='reply_to_post'),
+    path('add_reply_ajax/', add_reply_ajax, name='add_reply_ajax'),
+
 ]
