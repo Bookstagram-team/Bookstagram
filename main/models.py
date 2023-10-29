@@ -6,8 +6,8 @@ from django.dispatch import receiver
 from django.utils import timezone
 
 class User(AbstractUser):
-    is_customer = models.BooleanField('Is customer', default=False)
-    is_employee = models.BooleanField('Is employee', default=False)
+    is_customer = models.BooleanField('Is reader', default=False)
+    is_employee = models.BooleanField('Is author', default=False)
 
 #tambahan untuk attirbut tiap user itu apa aja
 class UserProfile(models.Model):
