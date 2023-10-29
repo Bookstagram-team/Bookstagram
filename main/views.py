@@ -30,12 +30,21 @@ def display_books(request):
     books = Book.objects.all()  # Ambil semua objek dari model Book
     return render(request, 'cobabook.html', {'books': books})
 
+
+def display_books_based_name(request, name):
+    name = request.user.username  # Ini mungkin merupakan objek yang tertunda
+    # name_value = name.get()  # Ini akan mengambil nilai aktual dari objek yang tertunda
+    first_letter = name[0]  # Mengambil huruf pertama dari nama
+    print(first_letter)
+    #first_letter = name[0]  # Mengambil huruf pertama dari nama
+    books = Book.objects.filter(Q(Judul__icontains=first_letter))  # Mencari buku dengan judul yang mengandung huruf pertama nama
+    return books
 @login_required(login_url='/login')
 def show_main(request):
     items = Item.objects.filter(user=request.user)
 
     context = {
-        'nama_aplikasi': 'Ewod Hearthstone TCG',
+        'nama_aplikasi': 'Bookstagram',
         'nama': request.user.username, 
         'kelas': 'PBP F', 
         'items': items,
