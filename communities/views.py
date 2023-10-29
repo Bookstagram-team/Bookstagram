@@ -5,7 +5,7 @@ from book.models import Book
 from django.views.decorators.csrf import csrf_exempt
 from communities.models import Event
 from django.core import serializers
-
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 def show_books(request):
