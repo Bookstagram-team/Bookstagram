@@ -30,6 +30,15 @@ def display_books(request):
     books = Book.objects.all()  # Ambil semua objek dari model Book
     return render(request, 'cobabook.html', {'books': books})
 
+def display_books_based_name(request):
+    name = request.user.username  # Ini mungkin merupakan objek yang tertunda
+    # name_value = name.get()  # Ini akan mengambil nilai aktual dari objek yang tertunda
+    first_letter = name[0]  # Mengambil huruf pertama dari nama
+    print(first_letter)
+    #first_letter = name[0]  # Mengambil huruf pertama dari nama
+    books = Book.objects.filter(Q(Judul__icontains=first_letter))  # Mencari buku dengan judul yang mengandung huruf pertama nama
+    return books
+
 @login_required(login_url='/login')
 def show_main(request):
     items = Item.objects.filter(user=request.user)
@@ -77,19 +86,6 @@ def show_json_by_id(request, id):
     data = Item.objects.filter(pk=id)
     return HttpResponse(serializers.serialize("json", data), content_type="application/json")
 
-
-# def register(request):
-#     form = UserCreationForm()
-
-#     if request.method == "POST":
-#         form = UserCreationForm(request.POST)
-#         if form.is_valid():
-#             form.save()
-
-#             messages.success(request, 'Your account has been successfully created!')
-#             return redirect('main:login')
-#     context = {'form':form}
-#     return render(request, 'register.html', context)
 def register(request):
     form = SignUpForm()
     if request.method == 'POST':
@@ -169,10 +165,6 @@ def add_item_ajax(request):
 
     return HttpResponseNotFound()
 
-
-
-
-
 #TAMBAHAN BARU
 
 class UserSearch(View):
@@ -187,39 +179,19 @@ class UserSearch(View):
         }
         return render(request, 'search.html', context)
     
-
 class ProfileView(View):
     def get(self, request, pk, *args, **kwargs):
         profile = UserProfile.objects.get(pk=pk)
         user = profile.user
-        # posts = Post.objects.filter(author=user).order_by('-created_on')
-
-        # followers = profile.followers.all()
-
-        # if len(followers) == 0:
-        #     is_following = False
-
-        # for follower in followers:
-        #     if follower == request.user:
-        #         is_following = True
-        #         break
-        #     else:
-        #         is_following = False
-
-        # number_of_followers = len(followers)
-
+        result = display_books_based_name(request)
         context = {
             'user': user,
             'profile': profile,
-            # 'posts': posts,
-            # 'number_of_followers': number_of_followers,
-            # 'is_following': is_following,
+            'result': result
         }
 
         return render(request, 'profile.html', context)
     
-
-
 class ProfileEditView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = UserProfile
     fields = ['name', 'bio', 'picture']

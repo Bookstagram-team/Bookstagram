@@ -31,13 +31,6 @@
             </ul>
             <!-- Navbar search box and user -->
             {% if user.is_authenticated %}
-            <form class="d-flex" method="GET" action="{% url 'main:profile-search' %}">
-                <div class="input-group">
-                    <span class="input-group-text" id="basic-addon1">@</span>
-                    <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" name="query" value="{{ request.GET.query }}">
-                    <button class="remove-default-btn" type="submit"><i class="fas fa-search"></i></button>
-                </div>
-            </form>
             <div class="nav-item dropdown" style="margin-left: 10px;">
                 <a class="nav-link dropdown-toggle text-light" data-bs-toggle="dropdown" role="buton" aria-expanded="false"><i class="fas fa-user"></i></a>
                 <ul class="dropdown-menu">

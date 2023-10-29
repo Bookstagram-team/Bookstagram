@@ -4,8 +4,6 @@ from django.contrib.auth import get_user_model
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
-
-
 class User(AbstractUser):
     is_customer = models.BooleanField('Is customer', default=False)
     is_employee = models.BooleanField('Is employee', default=False)
@@ -19,8 +17,6 @@ class UserProfile(models.Model):
 	# location = models.CharField(max_length=100, blank=True, null=True)
 	picture = models.ImageField(upload_to='uploads/profile_pictures', default='uploads/profile_pictures/default.png', blank=True)
 	# followers = models.ManyToManyField(User, blank=True, related_name='followers')
-
-
 
 class Item(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)

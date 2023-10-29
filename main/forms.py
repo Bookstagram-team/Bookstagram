@@ -38,14 +38,7 @@ class SignUpForm(UserCreationForm):
             }
         )
     )
-    # email = forms.CharField(
-    #     widget=forms.TextInput(
-    #         attrs={
-    #             "class": "form-control"
-    #         }
-    #     )
-    # )
-
+    
     class Meta:
         model = User
         fields = ('username', 'password1', 'password2', 'is_employee', 'is_customer')
