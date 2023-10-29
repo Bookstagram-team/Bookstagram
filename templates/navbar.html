@@ -1,41 +1,52 @@
 <div class="container">
-    <nav class="navbar navbar-expand-lg navbar-light">
-      <div class="container-fluid">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <!-- disini ada bagian untuk ke main -> krn mainnya awalnbya utnuk post ga jadi -> jadinya tetep aja -->
-        <!-- <i class="fas fa-book"></i> Bookstagram</a> -->
-        <!-- nyobak paki render -->
-        <i class="fas fa-book"></i> 
-        <a href="ILALAL">Discussion</a> 
-        <a href="URL_Discussion2">Event</a> 
-        <a href="URL_Catalogue">Catalogue</a>
-
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          </ul>
-          {% if user.is_authenticated %}
-          <form class="d-flex" method="GET" action="{% url 'main:profile-search' %}">
-            <div class="input-group">
-              <span class="input-group-text" id="basic-addon1">@</span>
-              <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" name="query" value="{{ request.GET.query }}">
-              <button class="remove-default-btn" type="submit"><i class="fas fa-search"></i></button>
-            </div>
-          </form>
-          {% endif %}
-          <!-- {% if user.is_authenticated %} -->
-          <div class="nav-item dropdown" style="margin-left: 10px;">
-            <a class="nav-link dropdown-toggle text-dark" data-bs-toggle="dropdown" role="buton" aria-expanded="false"><i class="fas fa-user"></i></a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="{% url 'main:profile' request.user.profile.pk %}">Profile</a></li>
-              <!-- gatau ini berhasil atau ga -->
-              <li><a class="dropdown-item" href="{% url 'main:logout' %}">Sign Out</a></li>
-            </ul>
-          </div>
-          <!-- {% endif %} -->
-        </div>
-      </div>
-    </nav>
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <!-- disini ada bagian untuk ke main -> krn mainnya awalnbya utnuk post ga jadi -> jadinya tetep aja -->
+      <!-- <i class="fas fa-book"></i> Bookstagram</a> -->
+      <!-- nyobak paki render -->
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'main:show_main' %}">Home</a>
+        </li>
+        <li class="event">
+            <a class="nav-link" href="IAAKDKA">Event</a>
+        </li>
+        <li class="discussion">
+            <a class="nav-link" href="IAAKDKA">Discussion</a>
+        </li>
+        <li class="catalogue">
+          <a class="nav-link" href="IAAKDKA">Catalogue</a>
+        </li>
+        </ul>
     </div>
-    
+
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        </ul>
+        {% if user.is_authenticated %}
+        <form class="d-flex" method="GET" action="{% url 'main:profile-search' %}">
+          <div class="input-group">
+            <span class="input-group-text" id="basic-addon1">@</span>
+            <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" name="query" value="{{ request.GET.query }}">
+            <button class="remove-default-btn" type="submit"><i class="fas fa-search"></i></button>
+          </div>
+        </form>
+        {% endif %}
+        <!-- {% if user.is_authenticated %} -->
+        <div class="nav-item dropdown" style="margin-left: 10px;">
+          <a class="nav-link dropdown-toggle text-dark" data-bs-toggle="dropdown" role="buton" aria-expanded="false"><i class="fas fa-user"></i></a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{% url 'main:profile' request.user.profile.pk %}">Profile</a></li>
+            <!-- gatau ini berhasil atau ga -->
+            <li><a class="dropdown-item" href="{% url 'main:logout' %}">Sign Out</a></li>
+          </ul>
+        </div>
+        <!-- {% endif %} -->
+      </div>
+    </div>
+  </nav>
+  </div>

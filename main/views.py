@@ -1,8 +1,10 @@
 import datetime
+
+from django.forms import ValidationError
 from main.forms import ItemForm
-from main.models import Item
+from main.models import Item, Comment
 from django.urls import reverse
-from django.http import HttpResponseRedirect, HttpResponse, HttpResponseNotFound;
+from django.http import HttpResponseBadRequest, HttpResponseRedirect, HttpResponse, HttpResponseNotFound, JsonResponse;
 from django.core import serializers
 from django.shortcuts import redirect, render
 from django.contrib import messages  
@@ -142,7 +144,7 @@ def edit_item(request, id):
 
 def delete_item(request, id):
     # Get data berdasarkan ID
-    item = Item.objects.get(pk = id)
+    item = Comment.objects.get(pk = id)
     # Hapus data
     item.delete()
     # Kembali ke halaman awal
@@ -150,25 +152,23 @@ def delete_item(request, id):
 
 
 def get_item_json(request):
-    item = Item.objects.filter(user=request.user)
+    item = Comment.objects.all()
     return HttpResponse(serializers.serialize('json', item))
 
-
 @csrf_exempt
-def add_item_ajax(request):
+def add_rating_ajax(request):
     if request.method == 'POST':
-        name = request.POST.get("name")
-        amount = request.POST.get("amount")
-        description = request.POST.get("description")
-        user = request.user
-
-        new_item = Item(name=name, amount=amount, description=description, user=user)
-        new_item.save()
-
-        return HttpResponse(b"CREATED", status=201)
-
-    return HttpResponseNotFound()
-
+        try:
+            name = request.POST.get("name")
+            rating = request.POST.get("rating")
+            comments = request.POST.get("description")
+            new_comment = Comment(name=name, rate=rating, comments=comments)
+            new_comment.save()
+            return JsonResponse({"message": "Comment created successfully"}, status=201)
+        except ValidationError:
+            return HttpResponseBadRequest("Invalid data")
+    else:
+        return HttpResponseNotFound()
 
 
 
