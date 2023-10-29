@@ -21,4 +21,6 @@ urlpatterns = [
     path('', include('main.urls')),
     path('admin/', admin.site.urls),
     path('book/', include('book.urls')),
+    path('communities/', include('communities.urls')),
+    path('book/', include(('book.urls', 'book'), namespace='book')),
 ]

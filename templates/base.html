@@ -15,8 +15,20 @@
     </head>
 
     <body style="background-color: rgb(230, 213, 213); background-size: cover;">
+        {% block navbar %}
         {% include 'navbar.html' %}
+        {% endblock navbar %}
         {% block content %}
         {% endblock content %}
     </body>
+
+    <style type="text/css">
+        .italic {
+            font-style: italic;
+        }
+        .list-group-item {
+            background-color: #f5f5f5;
+            font-weight: bold;
+        }
+    </style>
 </html>
