@@ -59,8 +59,9 @@
                         {{ form.body }}
 
                         <div class="d-grid gap-2">
+                            {% if request.user.is_employee %}
                             <button type="submit" class="btn btn-success mt-3">Submit!</button>
-
+                            {% endif %}
                     
                         </div>
                     </form>
