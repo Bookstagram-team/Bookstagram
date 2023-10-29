@@ -128,7 +128,7 @@
     </li>
     <li><a class="dropdown-item" href="#" id="sort_none">None</a></li>
 </ul>
-{% if request.user.is_customer %}
+{% if request.user.is_employee %}
 <a href="{% url 'main:add_book' %}" class="btn btn-primary">Tambahkan Buku</a>
 {% endif %}
 <div class="centered-container">
