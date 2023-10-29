@@ -35,9 +35,9 @@ Halaman ini berisi form user yang menampilkan foto profil, role, dan dashboard s
 - Forum diskusi (oleh Edwin Daniel Toliansa)  
 
 Halaman ini menampilkan urutan forum diskusi berbentuk card yang berada di rangking 1 sampai 15. Ketika card diklik akan muncl diskusi seperti bubble di stackoverflow. Satu komen bisa direply dengan komen lainnya. Pengguna bisa menghapus dan edit komen sendiri.  Di halaman ini, akan ada button “add forum discussion”, yang jika diklik oleh pembaca akan menampilkan pop-up message “gagal” dan kalau diklik oleh author maka beralih ke halaman form add book forum discussion. 
-- Add book forum discussion (oleh Scudetto Ciano Syam) 
+- Katalog Buku (oleh Scudetto Ciano Syam) 
 
-Halaman ini berbentuk form yang menerima input judul buku, tetapi judul buku yang ditambahkan harus diapstikan sudah ada di dalam dataset.
+Halaman ini menampilkan buku-buku yang ada pada aplikasi juga dapat melihat informasi detail mengenai buku tersebut, halaman ini juga memiliki fitur menambahkan buku.
 - Communities (oleh Darryl Nawawi )   
 
  Halaman ini interfacenya seperti feed, menampilkan event - event yang akan ada, yang mana penulis buku dapat menambahkan acara communities.
