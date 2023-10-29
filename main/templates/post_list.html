@@ -1,0 +1,187 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    .card {
+        margin-bottom: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border: 1px solid #ddd;
+        border-radius: 8px;
+    }
+
+    .card-body {
+        padding: 20px;
+    }
+
+    .card-title {
+        font-size: 1.25rem;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .card-text {
+        color: #666;
+    }
+
+    /* Tambahkan gaya untuk tombol Like yang diklik */
+    .like-button.clicked {
+        background-color: green;
+        color: white;
+    }
+
+    .dislike-button.clicked {
+        background-color: rgb(240, 52, 0);
+        color: white;
+    }
+
+    .reply-button{
+        background-color: rgb(37, 151, 227);
+        color: white;
+    }
+</style>
+
+<div class="container">
+    <div class="row justify-content-center mt-3" id="post-{{ post.id }}">
+        <div class="col-md-5 col-sm-12 border-bottom">
+            <h5>Add a Post!</h5>
+            <button id="sort-button">Sort by Likes</button>
+        </div>
+    </div>
+
+    <div class="row justify-content-center mt-3 mb-5">
+        <div class="col-md-5 col-sm-12">
+            <div class="card">
+                <div class="card-body">
+                    <form method="POST">
+                        {% csrf_token %}
+                        {{ form.title }}
+                        {{ form.body }}
+
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-success mt-3">Submit!</button>
+
+                    
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% for post in post_list %}
+    <div class="row justify-content-center mt-3">
+        <div class="col-md-5 col-sm-12 border-bottom">
+            <div class="card">
+                <div class="card-body">
+                    <p><strong>{{ post.author }}</strong> {{ post.created_on }}</p>
+                    <p class="card-title">{{ post.title }}</p>
+                    <p class="card-text">{{ post.body }}</p>
+                    <button class="like-button">Like</button>
+                    <button class="dislike-button">Dislike</button>
+            
+                    
+
+                    <button class="reply-button" data-post-id="{{ post.id }}">Reply</button>
+
+                    <!-- Formulir Balasan -->
+                    <form id="replyForm-{{ post.id }}" style="display:none;">
+                        <textarea name="reply" placeholder="Write your reply here..."></textarea>
+                        <button type="submit">Submit Reply</button>
+                    </form>
+            
+                    <!-- Kontainer Balasan -->
+                    <div id="replies-{{ post.id }}"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Menambahkan event listener untuk tombol Like
+ // Adding event listener for Like button
+document.querySelectorAll('.like-button').forEach(function(button) {
+    button.addEventListener('click', function() {
+        // Check if Dislike button is clicked
+        const dislikeButton = this.parentElement.querySelector('.dislike-button');
+        if (dislikeButton.classList.contains('clicked')) {
+            // Remove 'clicked' class from Dislike button
+            dislikeButton.classList.remove('clicked');
+        }
+        // Toggle 'clicked' class for Like button
+        this.classList.toggle('clicked');
+    });
+});
+
+// Adding event listener for Dislike button
+document.querySelectorAll('.dislike-button').forEach(function(button) {
+    button.addEventListener('click', function() {
+        // Check if Like button is clicked
+        const likeButton = this.parentElement.querySelector('.like-button');
+        if (likeButton.classList.contains('clicked')) {
+            // Remove 'clicked' class from Like button
+            likeButton.classList.remove('clicked');
+        }
+        // Toggle 'clicked' class for Dislike button
+        this.classList.toggle('clicked');
+    });
+});
+
+document.getElementById('sort-button').addEventListener('click', function() {
+    // Mengambil daftar post dan mengonversi menjadi array
+    const posts = Array.from(document.querySelectorAll('.card'));
+
+    // Mengurutkan post berdasarkan jumlah like (dalam descending order)
+    posts.sort(function(a, b) {
+        const likesA = a.querySelector('.like-count').innerText;
+        const likesB = b.querySelector('.like-count').innerText;
+        return parseInt(likesB) - parseInt(likesA);
+    });
+
+    // Memasukkan post yang telah diurutkan kembali ke forum
+    const container = document.querySelector('.container');
+    container.innerHTML = '';
+    posts.forEach(function(post) {
+        container.appendChild(post);
+    });
+});
+
+
+        // Menambahkan event listener untuk tombol Reply
+
+
+
+
+         // Modify the event listener for form submission
+         document.querySelectorAll('.reply-button').forEach(function(button) {
+            button.addEventListener('click', function() {
+                const postId = this.getAttribute('data-post-id');
+                const replyForm = document.getElementById(`replyForm-${postId}`);
+                const repliesContainer = document.getElementById(`replies-${postId}`);
+                
+                replyForm.addEventListener('submit', function(event) {
+                    event.preventDefault();
+                    const replyText = this.querySelector('textarea[name="reply"]').value;
+                    
+                    // Send AJAX request to add the reply
+                    const xhr = new XMLHttpRequest();
+                    xhr.open('POST', '/add_reply_ajax/');
+                    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                    xhr.onload = function() {
+                        if (xhr.status === 200) {
+                            // If successful, update the UI with the reply
+                            const newReply = document.createElement('p');
+                            newReply.textContent = replyText;
+                            repliesContainer.appendChild(newReply);
+                        }
+                    };
+                    xhr.send(`post_id=${postId}&reply=${replyText}`);
+                });
+            });
+        });
+    });
+</script>
+
+{% endblock content %}

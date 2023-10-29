@@ -18,6 +18,35 @@ from django.urls import reverse_lazy
 from django.views.generic.edit import UpdateView, DeleteView
 from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
 from book.models import Book
+from django.shortcuts import redirect
+from django.http import JsonResponse
+
+from .models import Post
+from .models import Reply
+from django.shortcuts import render, redirect
+from .models import Post  
+
+from django.http import JsonResponse
+
+from django.contrib import messages
+from django.shortcuts import redirect, render
+
+from django.shortcuts import render
+from django.views import View
+from.models import Post
+
+from .forms import PostForm
+from django.http import JsonResponse
+from .models import Post
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+
+
+
+
+
+
+
 
 # Akun1 -> Ikan, 1234567%
 # Akun2 -> Bungres, 0000000!
@@ -236,3 +265,102 @@ class ProfileEditView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         return self.request.user == profile.user
 
 
+
+
+
+
+
+
+
+def forum(request):
+    form = ItemForm(request.POST or None)
+
+    if form.is_valid() and request.method == "POST":
+        item = form.save(commit=False)
+        item.user = request.user
+        item.save()
+        return render(request, "forum.html", context)
+
+    
+    context = {'form': form}
+    return render(request, "forum.html", context)
+
+
+
+
+
+class PostListView(View):
+    def get(self, request, *args, **kwargs):
+        posts = Post.objects.all().order_by('-created_on')
+        form = PostForm()
+        context = {
+            'post_list' : posts,
+            'form': form, 
+        }
+
+        return render(request, 'post_list.html', context)
+    
+    def post(self, request, *args, **kwargs):
+        posts = Post.objects.all().order_by('-created_on')
+        form = PostForm(request.POST)
+
+        if form.is_valid():
+            new_post = form.save(commit=False)
+            new_post.author = request.user
+            new_post.save()
+
+        context = {
+            'post_list': posts,
+            'form': form,
+        }
+
+        return render(request, 'post_list.html', context)
+    
+def handle_reaction(request, post_id, reaction):
+    # Lakukan validasi dan logika Anda di sini
+    # Misalnya, perbarui model Post dengan respons yang diberikan
+
+    # Contoh:
+    post = Post.objects.get(id=post_id)
+    if reaction == 'like':
+        post.likes += 1
+    elif reaction == 'dislike':
+        post.dislikes += 1
+    post.save()
+
+    return JsonResponse({'success': True})
+
+def my_view(request):
+    # Ambil daftar post dari database
+    post_list = Post.objects.all()
+
+    # Di sini Anda dapat memperbarui properti likes pada setiap objek post
+    for post in post_list:
+        post.likes = post.like_set.count()  # contoh: menghitung jumlah like
+
+    # Kirim post_list yang sudah diperbarui ke template
+    return render(request, 'template.html', {'post_list': post_list})
+
+
+def reply_to_post(request, post_id):
+    # Proses balasan disini
+    # ...
+    # Balas dengan JSON yang berisi data balasan
+    return JsonResponse({'reply_text': 'Balasan berhasil disimpan.'})
+
+
+
+
+@csrf_exempt
+def add_reply_ajax(request):
+    if request.method == 'POST':
+        post_id = request.POST.get('post_id')
+        reply_text = request.POST.get('reply')
+
+        # Assuming you have a model named Reply with fields 'post' and 'text'
+        post = Post.objects.get(id=post_id)
+        reply = Reply(post=post, text=reply_text)
+        reply.save()
+
+        return JsonResponse({'status': 'success'})
+    return JsonResponse({'status': 'error'})

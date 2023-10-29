@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Simple Forum</title>
+    <style>
+        /* Custom CSS for forum section */
+        .forum-section {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
+        /* Style for individual posts */
+        .post-card {
+            margin-bottom: 20px;
+        }
+
+        /* Adjust card appearance */
+        .card {
+            border: none;
+            background-color: #36e4ff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        /* Style for new post form */
+        .new-post-form {
+            margin-top: 30px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #36e4ff;
+        }
+
+        /* Style for like and dislike buttons */
+        .like-button,
+        .dislike-button {
+            margin-right: 10px;
+        }
+
+        /* Increase font size of post title after posting */
+        .post-card.posted .card-title {
+            font-size: 24px;
+        }
+
+        /* Style for liked/disliked buttons */
+        .like-button.clicked {
+            background-color: #28a745;
+        }
+
+        .dislike-button.clicked {
+            background-color: #dc3545;
+        }
+
+        /* Style for reply form */
+        .new-reply-form {
+            margin-top: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #28a745;
+        }
+
+        .reply-button {
+            margin-right: 10px;
+        }
+
+        .reply-card {
+            margin-top: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #28a745;
+        }
+
+        .reply-card .card-body {
+            padding: 10px;
+        }
+
+        /* Style for reply content */
+        .reply-content {
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Add a new section for the forum -->
+    <div class="forum-section">
+        <h2>Forum Bookstagram</h2>
+        <div class="row" id="forumPosts"></div>
+        
+
+        <!-- Add form for user to submit new post -->
+        <div class="new-post-form">
+            <h3>Add a New Post</h3>
+            <div class="mb-3">
+                <input type="text" class="form-control" id="newPostTitle" placeholder="Title" required>
+            </div>
+            <div class="mb-3">
+                <textarea class="form-control" id="newPostContent" placeholder="Content" required></textarea>
+            </div>
+            <div class="mb-3">
+                <textarea class="form-control" id="newPostJudulbuku" placeholder="Book Title" required></textarea>
+            </div>
+            <button class="btn btn-primary" onclick="submitNewPost()">Submit Post</button>
+        </div>
+    </div>
+
+    <script>
+        // Initialize user reactions object
+        const userReactions = {};
+
+        // Initialize replies object
+        const replies = {};
+
+        async function displayPosts() {
+    const forumPosts = document.getElementById("forumPosts");
+
+    let posts = getPostsFromLocalStorage();
+
+    if (posts.length === 0) {
+        posts = await getPostsFromDataset();
+        savePostsToLocalStorage(posts);
+    }
+
+            posts.forEach(post => {
+                const postCard = `
+                    <div class="col-md-4">
+                        <div class="card post-card ${post.reaction ? 'posted' : ''}" id="post-${post.id}">
+                            <div class="card-body">
+                                <h5 class="card-title">${post.title}</h5>
+                                <p class="card-text">${post.content}</p>
+                                <p class="card-text">Author:</p>
+                                <button class="btn btn-success like-button ${post.reaction === 'like' ? 'clicked' : ''}" onclick="toggleReaction(${post.id}, 'like')">${post.reaction === 'like' ? 'Liked' : 'Like'}</button>
+                                <button class="btn btn-danger dislike-button ${post.reaction === 'dislike' ? 'clicked' : ''}" onclick="toggleReaction(${post.id}, 'dislike')">${post.reaction === 'dislike' ? 'Disliked' : 'Dislike'}</button>
+                                <button class="btn btn-info reply-button" onclick="toggleReplyForm(${post.id})">Reply</button>
+                                <div class="new-reply-form" id="replyForm-${post.id}" style="display:none;">
+                                    <div class="mb-3">
+                                        <textarea class="form-control" id="replyContent-${post.id}" placeholder="Reply" required></textarea>
+                                    </div>
+                                    <button class="btn btn-primary" onclick="submitReply(${post.id})">Submit Reply</button>
+                                </div>
+                                <div class="replies" id="replies-${post.id}">
+                                    ${displayReplies(post.id)}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                forumPosts.innerHTML += postCard;
+            });
+        }
+
+        // Function to display replies for a post
+// Function to display replies for a post
+// Function to display replies for a post
+function displayReplies(postId) {
+    if (replies[postId] && replies[postId].length > 0) {
+        let replyHtml = '';
+        replies[postId].forEach(reply => {
+            const author = reply.author.username; // Ambil nama pengguna dari model User
+            replyHtml += `
+                <div class="reply-card">
+                    <div class="card-body">
+                        <p class="card-text">${reply.content}</p>
+                        <p class="card-text">forum by: ${author}</p>
+                    </div>
+                </div>
+            `;
+        });
+        return replyHtml;
+    }
+    return '';
+}
+
+
+        // Call the function to display posts
+        displayPosts();
+
+        function toggleReaction(postId, reactionType) {
+            const postElement = document.getElementById(`post-${postId}`);
+            const reactionButton = postElement.querySelector(`.${reactionType}-button`);
+
+            if (reactionButton.classList.contains('clicked')) {
+                // If already clicked, undo reaction
+                userReactions[postId] = null;
+                reactionButton.classList.remove('clicked');
+            } else {
+                // Toggle reaction
+                userReactions[postId] = reactionType;
+                reactionButton.classList.add('clicked');
+
+                // Reset the other reaction if exists
+                const otherReactionType = reactionType === 'like' ? 'dislike' : 'like';
+                const otherReactionButton = postElement.querySelector(`.${otherReactionType}-button`);
+                if (otherReactionButton) {
+                    userReactions[postId] = otherReactionType;
+                    otherReactionButton.classList.remove('clicked');
+                }
+            }
+        }
+
+        // Function to submit new post
+        function submitNewPost() {
+            const judulbuku = document.getElementById('newPostJudulbuku').value;
+            const title = document.getElementById('newPostTitle').value;
+            const content = document.getElementById('newPostContent').value;
+            const author = "{{ user.username }}";
+
+            const forumPosts = document.getElementById("forumPosts");
+
+            const timestamp = Date.now(); // Generate unique timestamp
+
+            const newPostCard = `
+                <div class="col-md-4">
+                    <div class="card post-card posted" id="post-${timestamp}">
+                        <div class="card-body">
+                            <h5 class="card-title">${title}</h5>
+                            <p class="card-text">${content}</p>
+                            <p class="card-text">${judulbuku}</p>
+                            <p class="card-text">forum by: ${author}</p>
+                            <button class="btn btn-success like-button" onclick="toggleReaction(${timestamp}, 'like')">Like</button>
+                            <button class="btn btn-danger dislike-button" onclick="toggleReaction(${timestamp}, 'dislike')">Dislike</button>
+                            <button class="btn btn-info reply-button" onclick="toggleReplyForm(${timestamp})">Reply</button>
+                            <div class="new-reply-form" id="replyForm-${timestamp}" style="display:none;">
+                                <div class="mb-3">
+                                    <textarea class="form-control" id="replyContent-${timestamp}" placeholder="Reply" required></textarea>
+                                </div>
+                                <button class="btn btn-primary" onclick="submitReply(${timestamp})">Submit Reply</button>
+                            </div>
+                            <div class="replies" id="replies-${timestamp}"></div>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            forumPosts.innerHTML += newPostCard;
+
+            // Clear form fields
+            document.getElementById('newPostTitle').value = '';
+            document.getElementById('newPostContent').value = '';
+            document.getElementById('newPostJudulbuku').value = '';
+        }
+
+        function savePostsToLocalStorage(posts) {
+    localStorage.setItem('forumPosts', JSON.stringify(posts));
+}
+
+function getPostsFromLocalStorage() {
+    const posts = localStorage.getItem('forumPosts');
+    return posts ? JSON.parse(posts) : [];
+}
+
+
+        function toggleReplyForm(postId) {
+            const replyForm = document.getElementById(`replyForm-${postId}`);
+            replyForm.style.display = replyForm.style.display === 'none' ? 'block' : 'none';
+        }
+
+        function submitReply(postId) {
+            const content = document.getElementById(`replyContent-${postId}`).value;
+
+            const repliesContainer = document.getElementById(`replies-${postId}`);
+
+            const timestamp = Date.now(); // Generate unique timestamp
+            const author = "{{ user.username }}";
+
+            if (!replies[postId]) {
+                replies[postId] = [];
+            }
+
+            replies[postId].push({
+                id: timestamp,
+                content
+            });
+
+            const newReplyCard = `
+                <div class="reply-card">
+                    <div class="card-body">
+                        <p class="card-text">${content}</p>
+                        <p class="card-text">reply by: ${author}</p>
+                    </div>
+                </div>
+            `;
+
+            repliesContainer.innerHTML += newReplyCard;
+
+            // Clear reply content
+            document.getElementById(`replyContent-${postId}`).value = '';
+        }
+    </script>
+
+</body>
+
+</html>
