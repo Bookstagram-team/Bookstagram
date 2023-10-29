@@ -16,7 +16,7 @@ def show_books(request):
     return render(request, "booklist.html", books)
 
 from django.shortcuts import render
-
+@login_required(login_url='/login')
 def show_communities(request):
     context = {
         'name': 'Pak Bepe',
