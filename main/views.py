@@ -261,6 +261,7 @@ def forum(request):
 
 
 class PostListView(View):
+    @login_required(login_url='/login')
     def get(self, request, *args, **kwargs):
         posts = Post.objects.all().order_by('-created_on')
         form = PostForm()
@@ -270,7 +271,8 @@ class PostListView(View):
         }
 
         return render(request, 'post_list.html', context)
-    
+        
+    @login_required(login_url='/login')
     def post(self, request, *args, **kwargs):
         posts = Post.objects.all().order_by('-created_on')
         form = PostForm(request.POST)
@@ -343,7 +345,7 @@ def handle_reaction(request, post_id, reaction):
 
     return JsonResponse({'success': True})
 
-
+@login_required(login_url='/login')
 def my_view(request):
     # Ambil daftar post dari database
     post_list = Post.objects.all()
@@ -355,7 +357,7 @@ def my_view(request):
     # Kirim post_list yang sudah diperbarui ke template
     return render(request, 'template.html', {'post_list': post_list})
 
-
+@login_required(login_url='/login')
 def reply_to_post(request, post_id):
     # Proses balasan disini
     # ...
@@ -376,6 +378,7 @@ def add_reply_ajax(request):
         return JsonResponse({'status': 'success'})
     return JsonResponse({'status': 'error'})
 
+@login_required(login_url='/login')
 def discussion_view(request):
     # Logika Anda untuk menyiapkan data atau melakukan operasi lainnya
     return render(request, 'post_list.html')
