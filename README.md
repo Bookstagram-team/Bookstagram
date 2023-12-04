@@ -74,3 +74,5 @@ Tidak bisa menambahkan forum diskusi baru,  tidak bisa menambahkan buku di datas
 
 ### Sumber dataset:
 https://www.kaggle.com/datasets/arashnic/book-recommendation-dataset/data
+
+###
