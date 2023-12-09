@@ -26,6 +26,12 @@ def show_communities(request):
 
     return render(request, "communities.html", context)
 
+@csrf_exempt
+def show_flutter_json(request):
+    data = Event.objects.all()
+    return HttpResponse(serializers.serialize("json", data), content_type="application/show-json")
+
+@csrf_exempt
 def get_event_json(request):
     product_item = Event.objects.all()
     return HttpResponse(serializers.serialize('json', product_item))

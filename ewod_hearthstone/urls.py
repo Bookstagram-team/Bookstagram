@@ -23,4 +23,5 @@ urlpatterns = [
     path('book/', include('book.urls')),
     path('communities/', include('communities.urls')),
     path('book/', include(('book.urls', 'book'), namespace='book')),
+    path('auth/', include('authentication.urls')),
 ]

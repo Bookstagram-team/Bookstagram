@@ -32,5 +32,5 @@ urlpatterns = [
     path('handle_reaction/<int:post_id>/<str:reaction>/', handle_reaction, name='handle_reaction'),
     path('reply/<int:post_id>/', reply_to_post, name='reply_to_post'),
     path('add_reply_ajax/', add_reply_ajax, name='add_reply_ajax'),
-
+    path('create-flutter/', create_event_flutter, name='create_product_flutter'),
 ]

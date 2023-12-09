@@ -11,5 +11,5 @@ class Book(models.Model):
     ImageS = models.CharField(max_length=255)
     ImageM = models.CharField(max_length=255)
     ImageL = models.CharField(max_length=255)
-    rating = models.IntegerField()
+    Rating = models.IntegerField()
 

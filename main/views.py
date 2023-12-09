@@ -1,5 +1,6 @@
 import datetime
-
+import json
+from communities.models import Event
 from django.forms import ValidationError
 from main.forms import ItemForm, AddBookForm, PostForm
 from main.models import Item, Comment, Post, Reply
@@ -386,4 +387,26 @@ def discussion_view(request):
     # Logika Anda untuk menyiapkan data atau melakukan operasi lainnya
     return render(request, 'post_list.html')
 
+@csrf_exempt
+def create_event_flutter(request):
+    if request.method == 'POST':
+        
+        data = json.loads(request.body)
+
+        # Ensure the user is authenticated before trying to access request.user
+        if not request.user.is_authenticated:
+            return JsonResponse({"status": "error", "message": "User not authenticated"}, status=403)
+
+        new_product = Event.objects.create(
+            nama_event=data.get("nama_event", ""),
+            harga=data.get("harga", 0),
+            foto=data.get("foto", ""),
+            tanggal_pelaksanaan=data.get("tanggal_pelaksanaan", ""),
+        )
+
+        new_product.save()
+
+        return JsonResponse({"status": "success"}, status=200)
+    else:
+        return JsonResponse({"status": "error"}, status=401)
 
