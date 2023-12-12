@@ -16,7 +16,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.views import View
 from .forms import SignUpForm
 from django.db.models import Q
-from .models import User, UserProfile
+from main.models import User, UserProfile
 from django.urls import reverse_lazy
 from django.views.generic.edit import UpdateView, DeleteView
 from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
