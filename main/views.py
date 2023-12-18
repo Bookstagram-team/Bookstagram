@@ -22,6 +22,16 @@ from django.views.generic.edit import UpdateView, DeleteView
 from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
 from book.models import Book
 from django.utils.decorators import method_decorator
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+import json
+from .models import Post
+from django.contrib.auth.models import User
+from main.models import User 
+
+from django.http import JsonResponse
+from django.shortcuts import get_object_or_404
+
 
 
 # Akun1 -> Ikan, 1234567%
@@ -270,12 +280,11 @@ class PostListView(View):
         posts = Post.objects.all().order_by('-created_on')
         form = PostForm()
         context = {
-            'post_list' : posts,
-            'form': form, 
+            'post_list': posts,
+            'form': form,
         }
-
         return render(request, 'post_list.html', context)
-    
+
     @method_decorator(login_required)
     def post(self, request, *args, **kwargs):
         posts = Post.objects.all().order_by('-created_on')
@@ -292,6 +301,63 @@ class PostListView(View):
         }
 
         return render(request, 'post_list.html', context)
+
+
+def show_json_posts(request):
+    posts = Post.objects.all().order_by('-created_on')
+    post_data = [
+        {
+            'id': post.id,
+            'author': post.author,
+            'title': post.title, 
+            'content': post.body,  # Update to use 'body'
+            'created_on': post.created_on.strftime('%Y-%m-%d %H:%M:%S'),
+        }
+        for post in posts
+    ]
+    return JsonResponse({'post_list': post_data}, safe=False)
+
+def show_xml_posts(request):
+    posts = Post.objects.all().order_by('-created_on')
+    data = serialize_posts(posts)
+    return HttpResponse(data, content_type="application/xml")
+
+
+def serialize_posts(posts):
+    post_data = [
+        {
+            'id': post.id,
+            'author': post.author.username,
+            'title': post.title, 
+            'content': post.body,  # Update to use 'body'
+            'created_on': post.created_on.strftime('%Y-%m-%d %H:%M:%S'),
+        }
+        for post in posts
+    ]
+    return serializers.serialize("json", post_data)
+
+def show_xml_by_id(request, id):
+    post = Post.objects.get(pk=id)
+    data = {
+        'id': post.id,
+        'author': post.author.username,
+        'title': post.title,
+        'content': post.body,
+        'created_on': post.created_on.strftime('%Y-%m-%d %H:%M:%S'),
+    }
+    xml_data = serializers.serialize("xml", [data])
+    return HttpResponse(xml_data, content_type="application/xml")
+
+def show_json_by_id(request, id):
+    post = Post.objects.get(pk=id)
+    data = {
+        'id': post.id,
+        'author': post.author.username,
+        'title': post.title,
+        'content': post.body,
+        'created_on': post.created_on.strftime('%Y-%m-%d %H:%M:%S'),
+    }
+    return JsonResponse(data)
 
 #TAMBAHAN BARU
 
@@ -410,3 +476,55 @@ def create_event_flutter(request):
     else:
         return JsonResponse({"status": "error"}, status=401)
 
+
+
+
+
+@csrf_exempt
+def create_flutter_post(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+
+        # Set the author to "Anonymous"
+        anonymous_user, created = User._default_manager.get_or_create(username='Anonymous')
+        username = data.get("author")
+        new_post = Post.objects.create(
+            author = username,
+            title=data["title"],
+            body=data["body"]
+            # Add other fields as needed
+        )
+
+        new_post.save()
+
+        return JsonResponse({"status": "success"}, status=200)
+    else:
+        return JsonResponse({"status": "error"}, status=401)
+    
+
+
+
+def like_post(request, post_id):
+    if request.method == 'POST':
+        post = get_object_or_404(Post, pk=post_id)
+        user = request.user
+
+        # Check if the user has already liked or disliked the post
+        existing_like = Like.objects.filter(post=post, user=user).first()
+
+        if existing_like:
+            # User has already liked or disliked the post, update the action
+            if existing_like.is_like:
+                # If the user previously liked, remove the like
+                existing_like.delete()
+            else:
+                # If the user previously disliked, remove the dislike and add a like
+                existing_like.delete()
+                Like.objects.create(post=post, user=user, is_like=True)
+        else:
+            # User has not liked or disliked the post, create a new like
+            Like.objects.create(post=post, user=user, is_like=True)
+
+        return JsonResponse({"status": "success"}, status=200)
+    else:
+        return JsonResponse({"status": "error"}, status=401)

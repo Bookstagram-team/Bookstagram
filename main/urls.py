@@ -1,6 +1,16 @@
+from django import views
 from django.urls import path
 from main.views import *
 from main.views import UserSearch, ProfileView, ProfileEditView, display_books
+from main.views import show_main, show_xml, show_json, show_xml_by_id, show_json_by_id 
+
+from django.contrib.auth import views as auth_views
+from django.urls import path, include 
+
+from main.views import create_flutter_post
+
+from django.urls import path
+#from .views import get_discussions
 app_name = 'main'
 
 
@@ -33,4 +43,19 @@ urlpatterns = [
     path('reply/<int:post_id>/', reply_to_post, name='reply_to_post'),
     path('add_reply_ajax/', add_reply_ajax, name='add_reply_ajax'),
     path('create-flutter/', create_event_flutter, name='create_product_flutter'),
+    path('discussion/create-flutter/', create_flutter_post, name='create_flutter_post'),
+  #  path('api/get_discussions/', get_discussions, name='get_discussions'),
+  #  path('discussion/json', show_jsonsa, name='show_jsonsa'),
+  #  path('discussion/xml', get_discussions, name='get_discussions_xml'),
+   # path('discussion/xml/<int:id>/', show_xml_by_id, name='show_xml_by_id'),
+   # path('discussion/json/<int:id>/', show_json_by_id, name='show_json_by_id'),
+   path('discussion/json/', show_json_posts, name='show_json_posts'),
+   path('discussion/xml/', show_xml_posts, name='show_xml_posts'),
+    path('discussion/create-flutter-post/', create_flutter_post, name='create-flutter-post'),
+    path('discussion/xml/<int:id>/', show_xml_by_id, name='show_xml_by_id'),
+    path('discussion/json/<int:id>/', show_json_by_id, name='show_json_by_id'),
+    path('accounts/login/', auth_views.LoginView.as_view(), name='login'),
+    path('accounts/', include('django.contrib.auth.urls')),
+
+
 ]

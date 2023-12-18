@@ -47,8 +47,8 @@ INSTALLED_APPS = [
     'main',
     'book',
     'communities',
-    'authentication',
     'corsheaders'
+
 ]
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -104,7 +104,7 @@ if PRODUCTION:
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
-
+AUTH_USER_MODEL = 'main.User' 
 
 AUTH_PASSWORD_VALIDATORS = [
     {
