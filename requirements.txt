@@ -7,3 +7,4 @@ requests
 urllib3
 django-environ
 Pillow
+corsheaders==3.10.1

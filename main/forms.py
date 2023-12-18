@@ -3,13 +3,16 @@ from main.models import Item, Post
 from django.contrib.auth.forms import UserCreationForm
 # from django.contrib.auth.models import User
 from django import forms
-from .models import User
+from .models import KnowUserWell, User
 from book.models import Book
 
 class ItemForm(ModelForm):
     class Meta:
         model = Item
         fields = ["name", "amount", "description"]
+
+
+
 
 class AddBookForm(forms.ModelForm):
     class Meta:

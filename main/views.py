@@ -3,7 +3,7 @@ import json
 from communities.models import Event
 from django.forms import ValidationError
 from main.forms import ItemForm, AddBookForm, PostForm
-from main.models import Item, Comment, Post, Reply
+from main.models import Item, Comment, KnowUserWell, Post, Reply
 from django.urls import reverse
 from django.http import HttpResponseBadRequest, HttpResponseRedirect, HttpResponse, HttpResponseNotFound, JsonResponse;
 from django.core import serializers
@@ -14,9 +14,9 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from django.views import View
-from .forms import SignUpForm
+from .forms import SignUpForm, UserWellForm
 from django.db.models import Q
-from .models import User, UserProfile
+from main.models import User, UserProfile
 from django.urls import reverse_lazy
 from django.views.generic.edit import UpdateView, DeleteView
 from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
@@ -321,21 +321,7 @@ class ProfileView(View):
 
         return render(request, 'profile.html', context)
     
-class ProfileEditView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
-    model = UserProfile
-    fields = ['name', 'bio', 'picture']
-    template_name = 'profile_edit.html'
 
-    def get_success_url(self):
-        pk = self.kwargs['pk']
-        return reverse_lazy('main:profile', kwargs={'pk': pk})
-        # return render(self.request, 'profile_edit.html', {'profile_edit_url': reverse('profile-edit', args=[10])})
-
-
-    def test_func(self):
-        profile = self.get_object()
-        return self.request.user == profile.user
-    
 def handle_reaction(request, post_id, reaction):
     # Lakukan validasi dan logika Anda di sini
     # Misalnya, perbarui model Post dengan respons yang diberikan
@@ -410,3 +396,159 @@ def create_event_flutter(request):
     else:
         return JsonResponse({"status": "error"}, status=401)
 
+
+#json untuk profile - yg sedang login 
+def show_profile_flutter_json_single(request):
+    # Ambil data dari model UserProfile
+    user_profile = UserProfile.objects.get(user=request.user)
+
+    # Buat dictionary dengan data yang ingin Anda sertakan dalam respons JSON
+    user_profile_data = {
+        'name': user_profile.name,
+        'bio': user_profile.bio,
+        'role' : user_profile.user.role,
+        #'picture': user_profile.picture.url if user_profile.picture else '',
+    }
+
+    # Kembalikan respons JSON
+    return JsonResponse(user_profile_data)
+
+
+@csrf_exempt
+def show_profile_flutter_json_all(request):
+    # Ambil semua data dari model UserProfile
+    all_user_profiles = UserProfile.objects.all()
+
+    # Buat list untuk menyimpan data dari setiap profil pengguna
+    profiles_list = []
+
+    # Iterasi melalui setiap objek UserProfile dan tambahkan data ke list
+    for user_profile in all_user_profiles:
+        profile_data = {
+            'name': user_profile.user.username,
+            'bio': user_profile.bio,
+            'role_author' : user_profile.user.is_employee,
+            'role_reader' : user_profile.user.is_customer,
+            #'picture': user_profile.picture.url if user_profile.picture else '',
+        }
+        profiles_list.append(profile_data)
+
+    # Kembalikan respons JSON dengan list dari data profil pengguna
+    return JsonResponse({'user_profiles': profiles_list})
+
+#profile edit
+class ProfileEditView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    model = UserProfile
+   # fields = ['name', 'bio', 'picture']
+    fields = [ 'bio']
+    template_name = 'profile_edit.html'
+
+    def get_success_url(self):
+        pk = self.kwargs['pk']
+        return reverse_lazy('main:profile', kwargs={'pk': pk})
+        # return render(self.request, 'profile_edit.html', {'profile_edit_url': reverse('profile-edit', args=[10])})
+
+
+    def test_func(self):
+        profile = self.get_object()
+        return self.request.user == profile.user
+    
+#untuk update bio
+@csrf_exempt
+@login_required
+def update_bio(request):
+    if request.method == 'POST':
+        # Ambil data dari request JSON
+        bio_data = json.loads(request.body.decode('utf-8'))
+
+        # Validasi data
+        if 'bio' not in bio_data:
+            return JsonResponse({'status': 'error', 'message': 'Bio is required'}, status=400)
+
+        # Dapatkan profil pengguna yang sedang login
+        user_profile = UserProfile.objects.get(user=request.user)
+
+        # Perbarui bio
+        user_profile.bio = bio_data['bio']
+        user_profile.save()
+
+        # Kirim respons berhasil
+        updated_profile_data = {
+            'name': user_profile.user.username,
+            'bio': user_profile.bio,
+            # Tambahkan atribut lain sesuai kebutuhan
+        }
+        return JsonResponse({'status': 'success', 'user_profile': updated_profile_data})
+
+    else:
+        # Metode HTTP yang diizinkan hanya POST
+        return JsonResponse({'status': 'error', 'message': 'Method not allowed'}, status=405)
+    
+# def show_user_know_user_well_json(request):
+#     # Pastikan pengguna sudah login sebelum mengakses view ini
+#     if request.user.is_authenticated:
+#         user_profile = request.user.profile
+#         # Filter KnowUserWell berdasarkan UserProfile pengguna yang sedang login
+#         know_user_well_list = KnowUserWell.objects.filter(user_profile=user_profile)
+#         json_data = {"know_user_well_list": [know_user_well._json() for know_user_well in know_user_well_list]}
+#         return JsonResponse(json_data)
+#     else:
+#         # Jika pengguna belum login, berikan respons sesuai kebutuhan (misalnya, redirect atau respons error)
+#         return JsonResponse({"error": "User is not authenticated"})
+
+def all_show_user_know_user_well_json(request):
+    # Pastikan pengguna sudah login sebelum mengakses view ini
+    if request.user.is_authenticated:
+        # Ambil semua KnowUserWell
+        know_user_well_list = KnowUserWell.objects.all()
+        json_data = {"know_user_well_list": [know_user_well._json() for know_user_well in know_user_well_list]}
+        return JsonResponse(json_data)
+    else:
+        # Jika pengguna belum login, berikan respons sesuai kebutuhan (misalnya, redirect atau respons error)
+        return JsonResponse({"error": "User is not authenticated"})
+
+@login_required
+def single_show_user_know_user_well_json(request):
+    # Ensure the user is logged in before accessing this view
+    if request.user.is_authenticated:
+        # Filter KnowUserWell instances based on the currently logged-in user
+        know_user_well_list = KnowUserWell.objects.filter(user_profile=request.user)
+        
+        # Create a JSON response
+        json_data = {"know_user_well_list": [know_user_well._json() for know_user_well in know_user_well_list]}
+        
+        return JsonResponse(json_data)
+    else:
+        # If the user is not logged in, provide an appropriate response (e.g., redirect or error response)
+        return JsonResponse({"error": "User is not authenticated"})
+# def add_know_user_well(request):
+#     if request.user.is_authenticated:
+#         text = request.POST.get("text", "")
+#         if text:
+#             know_user_well = KnowUserWell.objects.create(user_profile=request.user.profile, text=text)
+#             return JsonResponse({"text": know_user_well.text})
+#         else:
+#             return JsonResponse({"error": "Text field cannot be empty"}, status=400)
+#     else:
+#         return JsonResponse({"error": "User is not authenticated"}, status=401)
+    
+@login_required
+def create_itemKnowUserWell(request):
+    form = UserWellForm(request.POST)
+
+    if request.method == 'POST':
+        form = UserWellForm(request.POST)
+
+        if form.is_valid():
+            # Get the user profile associated with the currently logged-in user
+            user_profile = UserProfile.objects.get(user=request.user)
+
+            # Create a KnowUserWell instance and associate it with the user
+            item = form.save(commit=False)
+            item.user_profile = request.user  # Assign the User instance, not the UserProfile instance
+            item.save()
+
+            return redirect('main:profile', pk=request.user.pk)  # Adjust the redirect URL as needed
+    
+    context = {'form': form}
+    return render(request, "create_userknow.html", context)

@@ -16,9 +16,17 @@ class UserProfile(models.Model):
 	bio = models.TextField(max_length=500, blank=True, null=True)
 	# birth_date=models.DateField(null=True, blank=True)
 	# location = models.CharField(max_length=100, blank=True, null=True)
-	picture = models.ImageField(upload_to='uploads/profile_pictures', default='uploads/profile_pictures/default.png', blank=True)
+	picture = models.ImageField(upload_to='uploads/profile_pictures', default='uploads/profile_pictures', blank=True)
 	# followers = models.ManyToManyField(User, blank=True, related_name='followers')
 
+@receiver(post_save, sender=User)
+def create_user_profile(sender, instance, created, **kwargs):
+	if created:
+		UserProfile.objects.create(user=instance)
+
+@receiver(post_save, sender=User)
+def save_user_profile(sender, instance, **kwargs):
+	instance.profile.save()
 class Item(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=255)
@@ -37,14 +45,7 @@ class Comment(models.Model):
 	rate = models.IntegerField()
 	comments = models.TextField()
 
-@receiver(post_save, sender=User)
-def create_user_profile(sender, instance, created, **kwargs):
-	if created:
-		UserProfile.objects.create(user=instance)
 
-@receiver(post_save, sender=User)
-def save_user_profile(sender, instance, **kwargs):
-	instance.profile.save()
 
 class Reply(models.Model):
     post = models.ForeignKey('main.Post', on_delete=models.CASCADE)  
@@ -54,3 +55,17 @@ class Reply(models.Model):
 
     def __str__(self):
         return f'Reply by {self.author.username} on {self.created_date}'
+	
+
+#coba nambah
+class KnowUserWell(models.Model):
+    user_profile = models.ForeignKey(User, on_delete=models.CASCADE, related_name='known_users_well')
+    attribute1 = models.CharField(max_length=10)
+
+    def __str__(self):
+        return f"{self.user_profile.user.username}'s KnowUserWell"
+    def _json(self):
+        return {
+            'attribute1': self.attribute1,
+            # Include other fields as needed
+        }

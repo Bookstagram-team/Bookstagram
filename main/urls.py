@@ -1,6 +1,6 @@
 from django.urls import path
 from main.views import *
-from main.views import UserSearch, ProfileView, ProfileEditView, display_books
+from main.views import UserSearch, ProfileView, ProfileEditView, display_books, create_itemKnowUserWell
 app_name = 'main'
 
 
@@ -28,9 +28,20 @@ urlpatterns = [
     path('add_book/', add_book, name='add_book'),
     path('book/<int:book_id>/', book_detail, name='book_detail'),
     path('catalogue/', catalogue_view, name='catalogue_page'),
+
     path('sort_book/', sort_book, name='sort_book'),
     path('handle_reaction/<int:post_id>/<str:reaction>/', handle_reaction, name='handle_reaction'),
     path('reply/<int:post_id>/', reply_to_post, name='reply_to_post'),
     path('add_reply_ajax/', add_reply_ajax, name='add_reply_ajax'),
     path('create-flutter/', create_event_flutter, name='create_product_flutter'),
+    #show json profile
+   # path('show-profile-json/', show_profile_flutter_json_single, name='show_profile_json'),
+    path('show-profile-all/', show_profile_flutter_json_all, name='show_profile_flutter_json'),
+    path('update-bio/', update_bio, name='update_bio'),
+   # path('know_user_well/user/json/', show_user_know_user_well_json, name='show_user_know_user_well_json'),
+    #path('know_user_well/add/', add_know_user_well, name='add_know_user_well'),
+    path('create_userknow/', create_itemKnowUserWell, name='create-userknow'),
+    path('know_user_well-all-json/', all_show_user_know_user_well_json, name='all_show_user_know_user_well_json'),
+    path('know_user_well-single-json/', single_show_user_know_user_well_json, name='single_show_user_know_user_well_json'),
+
 ]
