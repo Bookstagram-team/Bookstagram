@@ -427,3 +427,90 @@ def create_comment_flutter(request):
         return JsonResponse({"status": "success"}, status=200)
     else:
         return JsonResponse({"status": "error"}, status=401)
+    
+#json untuk profile - yg sedang login 
+def show_profile_flutter_json_single(request):
+    # Ambil data dari model UserProfile
+    user_profile = UserProfile.objects.get(user=request.user)
+
+    # Buat dictionary dengan data yang ingin Anda sertakan dalam respons JSON
+    user_profile_data = {
+        'name': user_profile.name,
+        'bio': user_profile.bio,
+        'role' : user_profile.user.role,
+        #'picture': user_profile.picture.url if user_profile.picture else '',
+    }
+
+    # Kembalikan respons JSON
+    return JsonResponse(user_profile_data)
+
+
+@csrf_exempt
+def show_profile_flutter_json_all(request):
+    # Ambil semua data dari model UserProfile
+    all_user_profiles = UserProfile.objects.all()
+
+    # Buat list untuk menyimpan data dari setiap profil pengguna
+    profiles_list = []
+
+    # Iterasi melalui setiap objek UserProfile dan tambahkan data ke list
+    for user_profile in all_user_profiles:
+        profile_data = {
+            'name': user_profile.user.username,
+            'bio': user_profile.bio,
+            'role_author' : user_profile.user.is_employee,
+            'role_reader' : user_profile.user.is_customer,
+            #'picture': user_profile.picture.url if user_profile.picture else '',
+        }
+        profiles_list.append(profile_data)
+
+    # Kembalikan respons JSON dengan list dari data profil pengguna
+    return JsonResponse({'user_profiles': profiles_list})
+
+#untuk update bio
+@csrf_exempt
+@login_required
+def update_bio(request):
+    if request.method == 'POST':
+        # Ambil data dari request JSON
+        bio_data = json.loads(request.body.decode('utf-8'))
+
+        # Validasi data
+        if 'bio' not in bio_data:
+            return JsonResponse({'status': 'error', 'message': 'Bio is required'}, status=400)
+
+        # Dapatkan profil pengguna yang sedang login
+        user_profile = UserProfile.objects.get(user=request.user)
+
+        # Perbarui bio
+        user_profile.bio = bio_data['bio']
+        user_profile.save()
+
+        # Kirim respons berhasil
+        updated_profile_data = {
+            'name': user_profile.user.username,
+            'bio': user_profile.bio,
+            # Tambahkan atribut lain sesuai kebutuhan
+        }
+        return JsonResponse({'status': 'success', 'user_profile': updated_profile_data})
+
+    else:
+        # Metode HTTP yang diizinkan hanya POST
+        return JsonResponse({'status': 'error', 'message': 'Method not allowed'}, status=405)
+
+#profile edit
+class ProfileEditView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    model = UserProfile
+   # fields = ['name', 'bio', 'picture']
+    fields = [ 'bio']
+    template_name = 'profile_edit.html'
+
+    def get_success_url(self):
+        pk = self.kwargs['pk']
+        return reverse_lazy('main:profile', kwargs={'pk': pk})
+        # return render(self.request, 'profile_edit.html', {'profile_edit_url': reverse('profile-edit', args=[10])})
+
+
+    def test_func(self):
+        profile = self.get_object()
+        return self.request.user == profile.user

@@ -34,4 +34,6 @@ urlpatterns = [
     path('add_reply_ajax/', add_reply_ajax, name='add_reply_ajax'),
     path('create-flutter/', create_event_flutter, name='create_product_flutter'),
     path('comment-flutter/', create_comment_flutter, name='create_comment_flutter'),
+    path('show-profile-all/', show_profile_flutter_json_all, name='show_profile_flutter_json'),
+    path('update-bio/', update_bio, name='update_bio'),
 ]
