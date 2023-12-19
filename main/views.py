@@ -640,3 +640,80 @@ def sort_book(request):
         'Rating': book.rating,
     }} for book in books]
     return JsonResponse(data, safe=False)
+
+def show_json_posts(request):
+    posts = Post.objects.all().order_by('-created_on')
+    post_data = [
+        {
+            'id': post.id,
+            'author': post.author,
+            'title': post.title, 
+            'content': post.body,  # Update to use 'body'
+            'created_on': post.created_on.strftime('%Y-%m-%d %H:%M:%S'),
+        }
+        for post in posts
+    ]
+    return JsonResponse({'post_list': post_data}, safe=False)
+
+def show_xml_posts(request):
+    posts = Post.objects.all().order_by('-created_on')
+    data = serialize_posts(posts)
+    return HttpResponse(data, content_type="application/xml")
+
+
+def serialize_posts(posts):
+    post_data = [
+        {
+            'id': post.id,
+            'author': post.author.username,
+            'title': post.title, 
+            'content': post.body,  # Update to use 'body'
+            'created_on': post.created_on.strftime('%Y-%m-%d %H:%M:%S'),
+        }
+        for post in posts
+    ]
+    return serializers.serialize("json", post_data)
+
+def show_xml_by_id(request, id):
+    post = Post.objects.get(pk=id)
+    data = {
+        'id': post.id,
+        'author': post.author.username,
+        'title': post.title,
+        'content': post.body,
+        'created_on': post.created_on.strftime('%Y-%m-%d %H:%M:%S'),
+    }
+    xml_data = serializers.serialize("xml", [data])
+    return HttpResponse(xml_data, content_type="application/xml")
+
+def show_json_by_id(request, id):
+    post = Post.objects.get(pk=id)
+    data = {
+        'id': post.id,
+        'author': post.author.username,
+        'title': post.title,
+        'content': post.body,
+        'created_on': post.created_on.strftime('%Y-%m-%d %H:%M:%S'),
+    }
+    return JsonResponse(data)
+
+@csrf_exempt
+def create_flutter_post(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+
+        # Set the author to "Anonymous"
+        anonymous_user, created = User._default_manager.get_or_create(username='Anonymous')
+        username = data.get("author")
+        new_post = Post.objects.create(
+            author = username,
+            title=data["title"],
+            body=data["body"]
+            # Add other fields as needed
+        )
+
+        new_post.save()
+
+        return JsonResponse({"status": "success"}, status=200)
+    else:
+        return JsonResponse({"status": "error"}, status=401)

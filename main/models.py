@@ -29,7 +29,7 @@ class Post(models.Model):
 	title = models.TextField()
 	body = models.TextField()
 	created_on = models.DateTimeField(default=timezone.now)
-	author = models.ForeignKey(User, on_delete=models.CASCADE)
+	author = models.TextField()
 
 class Comment(models.Model):
 	name = models.CharField(max_length=255)

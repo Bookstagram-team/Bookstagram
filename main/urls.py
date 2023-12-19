@@ -1,8 +1,7 @@
-from django.urls import path
+from django.urls import include, path
 from main.views import *
-from main.views import UserSearch, ProfileView, ProfileEditView, display_books
+from django.contrib.auth import views as auth_views
 app_name = 'main'
-
 
 urlpatterns = [
     path('discussion/', PostListView.as_view(), name='discussion_page'),
@@ -42,4 +41,14 @@ urlpatterns = [
     path('get-book-details/<int:book_id>/',get_book_details, name='get_book_details'),
     path('book/api/book/sort_az/', sort_az, name='sort_az'), 
     path('book/api/book/sort_za/', sort_za, name='sort_za'),
+    path('handle_reaction/<int:post_id>/<str:reaction>/', handle_reaction, name='handle_reaction'),
+    path('reply/<int:post_id>/', reply_to_post, name='reply_to_post'),
+    path('add_reply_ajax/', add_reply_ajax, name='add_reply_ajax'),
+    path('create-flutter/', create_event_flutter, name='create_product_flutter'),
+    path('discussion/create-flutter/', create_flutter_post, name='create_flutter_post'),
+    path('discussion/json/', show_json_posts, name='show_json_posts'),
+    path('discussion/xml/', show_xml_posts, name='show_xml_posts'),
+    path('discussion/create-flutter-post/', create_flutter_post, name='create-flutter-post'),
+    path('discussion/xml/<int:id>/', show_xml_by_id, name='show_xml_by_id'),
+    path('discussion/json/<int:id>/', show_json_by_id, name='show_json_by_id'),
 ]
