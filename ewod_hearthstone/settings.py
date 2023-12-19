@@ -33,7 +33,7 @@ PRODUCTION = env.bool('PRODUCTION', False)
 DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
-CSRF_TRUSTED_ORIGINS = ['bookstagram-e01-tk.pbp.cs.ui.ac.id']
+CSRF_TRUSTED_ORIGINS = ['https://bookstagram-e01-tk.pbp.cs.ui.ac.id']
 
 # Application definition
 
