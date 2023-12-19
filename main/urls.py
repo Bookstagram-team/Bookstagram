@@ -36,4 +36,10 @@ urlpatterns = [
     path('comment-flutter/', create_comment_flutter, name='create_comment_flutter'),
     path('show-profile-all/', show_profile_flutter_json_all, name='show_profile_flutter_json'),
     path('update-bio/', update_bio, name='update_bio'),
+    path('show-books/', show_books_json, name='show_books'),
+    path("add-flutter/", add_book_flutter, name="add_book_flutter"),
+    path('get-books-json/', get_books_json, name='get_book_json'),
+    path('get-book-details/<int:book_id>/',get_book_details, name='get_book_details'),
+    path('book/api/book/sort_az/', sort_az, name='sort_az'), 
+    path('book/api/book/sort_za/', sort_za, name='sort_za'),
 ]

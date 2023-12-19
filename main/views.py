@@ -514,3 +514,129 @@ class ProfileEditView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     def test_func(self):
         profile = self.get_object()
         return self.request.user == profile.user
+
+def book_list(request):
+    # Mendapatkan parameter sorting dari query
+    sorting = request.GET.get('sort', '')
+
+    # Mengambil semua buku dari database
+    books = Book.objects.all()
+
+    # Mengurutkan buku berdasarkan parameter sorting
+    if sorting == 'az':
+        books = books.order_by('title')
+    elif sorting == 'za':
+        books = books.order_by('-title')
+
+    # Mengubah buku menjadi JSON dan mengirim respons
+    book_list = list(books.values())
+    return JsonResponse(book_list, safe=False)
+
+
+def get_book_json(request):
+    Book_item = Book.objects.all()
+    return HttpResponse(serializers.serialize('json',Book_item ))
+
+def get_book_details(request, book_id):
+    if request.method == 'GET':
+        book = Book.objects.get(id=book_id)
+        book_data = serializers.serialize('json', [book])
+        return JsonResponse(book_data, safe=False)
+
+@csrf_exempt
+def add_book_flutter(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        new_book = Book.objects.create(
+            ISBN = data["isbn"],
+            Judul = data["judul"],
+            Penulis = data["penulis"],
+            Publikasi = data["publikasi"],
+            Publisher = data["publisher"],
+            ImageS = data["imageS"],
+            ImageM = data["imageM"],
+            ImageL = data["imageL"],
+            Rating = data["rating"],
+            Urutan = data["urutan"],
+        )
+
+        new_book.save()
+
+        return JsonResponse({"status": "success"}, status=201)
+    else:
+        return JsonResponse({"status": "error", "message": "Only POST method is allowed"}, status=405)
+
+# fungsi view untuk halaman web
+def add_book(request):
+    if request.method == 'POST':
+        form = AddBookForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('main:catalogue_page')
+
+    form = AddBookForm()
+    return render(request, 'add_book.html', {'form': form})
+
+def sort_az(request):
+    data = Book.objects.order_by('title')
+    return HttpResponse(serializers.serialize("json", data), content_type="application/json")
+
+def sort_za(request):
+    data = Book.objects.order_by('-title')
+    return HttpResponse(serializers.serialize("json", data), content_type="application/json")
+
+def book_detail(request, book_id):
+    book = Book.objects.get(pk=book_id)
+    data = {
+        'Urutan': book.Urutan,
+        'ISBN': book.ISBN,
+        'Judul': book.Judul,
+        'Penulis': book.Penulis,
+        'Publikasi': book.Publikasi,
+        'Publisher': book.Publisher,
+        'ImageS': book.ImageS,
+        'ImageM': book.ImageM,
+        'ImageL': book.ImageL,
+        'Rating': book.Rating,
+    }
+
+    return render(request, 'book_detail.html', data)
+
+
+@login_required(login_url='/login')
+def catalogue_view(request):
+    # Logika Anda untuk menyiapkan data atau melakukan operasi lainnya
+    return render(request, 'catalogue.html')
+
+# nambahin ini
+@csrf_exempt
+def show_books_json(request):
+    data = Book.objects.all()
+    return HttpResponse(serializers.serialize("json", data), content_type="application/show-json")
+
+@csrf_exempt
+def get_books_json(request):
+    product_item = Book.objects.all()
+    return HttpResponse(serializers.serialize('json', product_item))
+
+def sort_book(request):
+    sort_order = request.GET.get('sort', 'none')
+    if sort_order == 'a_z':
+        books = Book.objects.order_by('Judul')
+    elif sort_order == 'z_a':
+        books = Book.objects.order_by('-Judul')
+    else:
+        books = Book.objects.all()
+    data = [{'fields': {
+        'Urutan': book.Urutan,
+        'ISBN': book.ISBN,
+        'Judul': book.Judul,
+        'Penulis': book.Penulis,
+        'Publikasi': book.Publikasi,
+        'Publisher': book.Publisher,
+        'ImageS': book.ImageS,
+        'ImageM': book.ImageM,
+        'ImageL': book.ImageL,
+        'Rating': book.rating,
+    }} for book in books]
+    return JsonResponse(data, safe=False)
